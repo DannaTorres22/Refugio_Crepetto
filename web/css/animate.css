@@ -2185,8 +2185,8 @@
   animation-duration: 0.75s;
   -webkit-animation-name: flipOutX;
   animation-name: flipOutX;
-  -webkit-backface-visibility: visible !important;
-  backface-visibility: visible !important;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
 }
 
 @-webkit-keyframes flipOutY {
@@ -2231,7 +2231,7 @@
   -webkit-animation-duration: 0.75s;
   animation-duration: 0.75s;
   -webkit-backface-visibility: visible !important;
-  backface-visibility: visible !important;
+  backface-visibility: visible;
   -webkit-animation-name: flipOutY;
   animation-name: flipOutY;
 }
@@ -3615,9 +3615,9 @@
 
 @media (print), (prefers-reduced-motion) {
   .animated {
-    -webkit-animation: unset !important;
-    animation: unset !important;
-    -webkit-transition: none !important;
-    transition: none !important;
+    -webkit-animation: unset;
+    animation: unset;
+    -webkit-transition: none;
+    transition: none;
   }
 }
