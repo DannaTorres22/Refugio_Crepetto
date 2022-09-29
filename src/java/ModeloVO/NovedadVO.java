@@ -5,12 +5,21 @@ package ModeloVO;
  * @author Danna Bejarano
  */
 public class NovedadVO {
-    private String idNovedad, idMascota, tipoNovedad, observacionNovedad, fechaNovedad;
+    private String idNovedad,
+            idMascota,
+            tipoNovedad,
+            observacionNovedad,
+            fechaNovedad;
     
         public NovedadVO() {
     }
 
-    public NovedadVO(String idNovedad, String idMascota, String tipoNovedad, String observacionNovedad, String fechaNovedad) {
+    public NovedadVO(String idNovedad,
+            String idMascota,
+            String tipoNovedad,
+            String observacionNovedad,
+            String fechaNovedad) {
+        
         this.idNovedad = idNovedad;
         this.idMascota = idMascota;
         this.tipoNovedad = tipoNovedad;
@@ -18,7 +27,11 @@ public class NovedadVO {
         this.fechaNovedad = fechaNovedad;
     }
 
-    public NovedadVO(String idMascota, String tipoNovedad, String observacionNovedad, String fechaNovedad) {
+    public NovedadVO(String idMascota,
+            String tipoNovedad,
+            String observacionNovedad,
+            String fechaNovedad) {
+        
         this.idMascota = idMascota;
         this.tipoNovedad = tipoNovedad;
         this.observacionNovedad = observacionNovedad;

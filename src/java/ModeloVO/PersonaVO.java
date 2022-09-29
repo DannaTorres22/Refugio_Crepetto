@@ -10,12 +10,23 @@ package ModeloVO;
  * @author Danna_bejarano
  */
 public class PersonaVO {
-    private String idPersona, idMascota, nombresPersona, apellidoPersona, fechaNacimiento, estadoPersona;
+    private String idPersona,
+            idMascota,
+            nombresPersona,
+            apellidoPersona,
+            fechaNacimiento,
+            estadoPersona;
 
     public PersonaVO() {
     }
 
-    public PersonaVO(String idPersona, String idMascota, String nombresPersona, String apellidoPersona, String fechaNacimiento, String estadoPersona) {
+    public PersonaVO(String idPersona,
+            String idMascota,
+            String nombresPersona,
+            String apellidoPersona,
+            String fechaNacimiento,
+            String estadoPersona) {
+        
         this.idPersona = idPersona;
         this.idMascota = idMascota;
         this.nombresPersona = nombresPersona;

@@ -10,9 +10,24 @@ package ModeloVO;
  * @author julia_000
  */
 public class MascotaVO {
-    private String idMascota, idUsuario,fechaIngreso, nombre, edad, raza, tipo, estadoMascota;
+    private String idMascota,
+            idUsuario,
+            fechaIngreso,
+            nombre,
+            edad,
+            raza,
+            tipo,
+            estadoMascota;
 
-    public MascotaVO(String idMascota, String idUsuario,String fechaIngreso, String nombre, String edad, String raza, String tipo, String estadoMascota) {
+    public MascotaVO(String idMascota,
+            String idUsuario,
+            String fechaIngreso,
+            String nombre,
+            String edad,
+            String raza,
+            String tipo,
+            String estadoMascota) {
+        
         this.idMascota = idMascota;
         this.idUsuario = idUsuario;
         this.fechaIngreso = fechaIngreso;
@@ -26,7 +41,14 @@ public class MascotaVO {
     public MascotaVO() {
     }
 
-    public MascotaVO(String idUsuario, String fechaIngreso,String nombre, String edad, String raza,String tipo, String estadoMascota) {
+    public MascotaVO(String idUsuario,
+            String fechaIngreso,
+            String nombre,
+            String edad,
+            String raza,
+            String tipo,
+            String estadoMascota) {
+        
         this.idUsuario = idUsuario;
         this.fechaIngreso = fechaIngreso;
         this.nombre = nombre;
