@@ -8,7 +8,6 @@ package Controlador;
 import ModeloDAO.MascotaDAO;
 import ModeloVO.MascotaVO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,7 +47,14 @@ public class MascotaControlador extends HttpServlet {
          int opcion = Integer.parseInt(request.getParameter("opcion"));
           
          //2.instanciar VO // infromacion
-          MascotaVO masVO = new MascotaVO(idMascota, idUsuario, fechaIngreso, nombre,  edad, raza, tipo, estadoMascota);
+          MascotaVO masVO = new MascotaVO(idMascota,
+                  idUsuario,
+                  fechaIngreso,
+                  nombre,
+                  edad,
+                  raza,
+                  tipo,
+                  estadoMascota);
           
            //3. instanciar Dao //opereaciones
           MascotaDAO masDAO = new MascotaDAO (masVO);

@@ -5,20 +5,17 @@
  */
 package Controlador;
 
-import ModeloDAO.RolDAO;
+
 import ModeloDAO.UsuarioDAO;
-import ModeloVO.RolVO;
 import ModeloVO.UsuarioVO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -50,7 +47,12 @@ public class UsuarioControlador extends HttpServlet {
     
         // id_Usuario , Usuario, Password,id_Rol 
         //2. ¿quien tiene los datos de forma segura? VO
-         UsuarioVO usuVO = new UsuarioVO(idUsuario, correoUsuario, password, rolId);
+        
+         UsuarioVO usuVO = new UsuarioVO(idUsuario,
+                 correoUsuario,
+                 password,
+                 rolId);
+         
         //3. ¿quien hace las operaciones? DAO
         UsuarioDAO usuDAO = new UsuarioDAO(usuVO);
         //4. administrar operaciones 
@@ -78,7 +80,11 @@ public class UsuarioControlador extends HttpServlet {
                 {
                     HttpSession misesion = request.getSession(true);
                     //crear objeto usuarioVO con los datos ingresados por el usuario.
-                    usuVO = new UsuarioVO(idUsuario, correoUsuario, password, rolId);
+                    usuVO = new UsuarioVO(idUsuario,
+                            correoUsuario,
+                            password,
+                            rolId);
+                    
                     misesion.setAttribute("datosUsuario", usuVO);
                
                     //Obtiene el rol del usuario

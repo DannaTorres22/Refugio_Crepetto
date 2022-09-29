@@ -8,7 +8,6 @@ package Controlador;
 import ModeloDAO.PersonaDAO;
 import ModeloVO.PersonaVO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +45,12 @@ public class PersonaControlador extends HttpServlet {
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
         //2.instanciar VO // infromacion
-        PersonaVO perVO = new PersonaVO(idPersona, idMascota, nombresPersona, apellidoPersona, fechaNacimiento, estadoPersona);
+        PersonaVO perVO = new PersonaVO(idPersona,
+                idMascota,
+                nombresPersona,
+                apellidoPersona,
+                fechaNacimiento,
+                estadoPersona);
 
         //3. instanciar Dao //opereaciones
         PersonaDAO perDAO = new PersonaDAO(perVO);

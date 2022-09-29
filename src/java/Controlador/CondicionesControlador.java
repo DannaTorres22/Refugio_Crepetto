@@ -8,7 +8,6 @@ package Controlador;
 import ModeloDAO.CondicionesDAO;
 import ModeloVO.CondicionesVO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,7 +48,17 @@ public class CondicionesControlador extends HttpServlet {
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
         //2. ¿Quién tiene los datos de forma segura? VO
-        CondicionesVO conVO = new CondicionesVO(idCondicion, idRespuesta, nombre, fechaNacimiento, tipoDocumento, numDocumento, direccion, celular, profesion, trabajo, correo);
+        CondicionesVO conVO = new CondicionesVO(idCondicion,
+                idRespuesta,
+                nombre,
+                fechaNacimiento,
+                tipoDocumento,
+                numDocumento,
+                direccion,
+                celular,
+                profesion,
+                trabajo,
+                correo);
 
         //3. ¿Quién hace las operaciones? DAO
         CondicionesDAO conDAO = new CondicionesDAO(conVO);
