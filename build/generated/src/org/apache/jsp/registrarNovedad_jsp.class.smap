@@ -1,0 +1,21 @@
+SMAP
+registrarNovedad_jsp.java
+JSP
+*S JSP
+*F
++ 0 registrarNovedad.jsp
+registrarNovedad.jsp
+*L
+5,29:46
+33,4:75
+36:79
+37:80,6
+38:86
+39:87,3
+40,24:90
+64:115,2
+65:117,3
+66:120
+67,3:121,3
+70,10:130
+*E
