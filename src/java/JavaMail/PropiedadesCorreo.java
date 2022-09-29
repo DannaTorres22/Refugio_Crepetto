@@ -25,7 +25,15 @@ import javax.mail.internet.MimeMessage;
  */
 public class PropiedadesCorreo 
 {
-    public static void envioCorreo( String host, String puerto, final String correoUsuario, final String password, String direccion, String asunto, String mensaje) throws AddressException, MessagingException            
+    public static void envioCorreo( String host,
+            String puerto,
+            final String correoUsuario,
+            final String password,
+            String direccion,
+            String asunto,
+            String mensaje)
+            throws AddressException,
+            MessagingException            
     {
         //Propiedades servidor SMTP
         Properties propiedades = new Properties();

@@ -31,7 +31,13 @@ public class MascotaDAO extends ConexionBd implements Crud
     private boolean operacion = false;
     private String sql;
 
-    private String idMascota="", idUsuario="", fechaIngreso="", nombre="",  edad="", raza="", tipo="", estadoMascota="";
+    private String idMascota="",
+            idUsuario="",
+            nombre="",
+            edad="",
+            raza="",
+            tipo="",
+            estadoMascota="";
 
     public MascotaDAO() {
     }
@@ -46,7 +52,6 @@ public class MascotaDAO extends ConexionBd implements Crud
             //2.2 Traigo los datos del VO
             idMascota = masVO.getIdMascota();
             idUsuario = masVO.getIdUsuario();
-            fechaIngreso = masVO.getFechaIngreso();
             nombre = masVO.getNombre();
             edad = masVO.getEdad();
             raza = masVO.getRaza();

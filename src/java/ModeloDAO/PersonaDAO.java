@@ -29,7 +29,12 @@ public class PersonaDAO extends ConexionBd implements Crud
     private boolean operacion = false;
     private String sql;
 
-    private String idPersona = "", idMascota = "", nombresPersona = "", apellidoPersona = "", fechaNacimiento = "", estadoPersona = "";
+    private String idPersona = "",
+            idMascota = "",
+            nombresPersona = "",
+            apellidoPersona = "",
+            fechaNacimiento = "",
+            estadoPersona = "";
 
     public PersonaDAO() {
     }

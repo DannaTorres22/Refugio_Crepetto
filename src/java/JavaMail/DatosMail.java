@@ -5,9 +5,8 @@
  */
 package JavaMail;
 
-import static com.sun.faces.facelets.util.Path.context;
+
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -65,7 +64,13 @@ public class DatosMail extends HttpServlet
         
         try 
         {
-            PropiedadesCorreo.envioCorreo(host, puerto, correoUsuario, password, receptor, asunto, contenido);
+            PropiedadesCorreo.envioCorreo(host,
+                    puerto,
+                    correoUsuario,
+                    password,
+                    receptor,
+                    asunto,
+                    contenido);
             resultadoMensaje="El mensaje se envio de forma correcta";
         } catch (Exception e) 
         {

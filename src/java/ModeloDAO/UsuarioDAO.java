@@ -30,7 +30,10 @@ public class UsuarioDAO extends ConexionBd implements Crud
     private boolean operacion = false;
     private String sql;
 
-    public String idUsuario = "", correoUsuario = "", password = "", rolId="";
+    public String idUsuario = "",
+            correoUsuario = "",
+            password = "",
+            rolId="";
     
     public UsuarioDAO() {
     }

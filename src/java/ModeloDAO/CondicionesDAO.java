@@ -29,8 +29,17 @@ public class CondicionesDAO extends ConexionBd implements Crud {
     private boolean operacion = false;
     private String sql;
     //declarar las variables para la infromacion
-    private String idCondicion= "", idRespuesta = "", nombre = "",fechaNacimiento = "", tipoDocumento= "",
-            numDocumento = "",direccion = "",celular= "",profesion= "",trabajo= "",correo= "";
+    private String idCondicion= "",
+            idRespuesta = "",
+            nombre = "",
+            fechaNacimiento = "",
+            tipoDocumento= "",
+            numDocumento = "",
+            direccion = "",
+            celular= "",
+            profesion= "",
+            trabajo= "",
+            correo= "";
     
     public CondicionesDAO() {
     }
@@ -124,34 +133,6 @@ public class CondicionesDAO extends ConexionBd implements Crud {
         return operacion;
 
     }
-
-   /* @Override
-    public boolean eliminarRegistro() {
-        try {
-            sql = "delete vehiculo set datId=?,catId=?,vehModelo=?,vehMarca=?,vehEstado=?,vehPrecio=? where vehPlaca=?";
-            puente = conexion.prepareStatement(sql);
-            puente.setString(1, datId);
-            puente.setString(2, catId);
-            puente.setString(3, vehModelo);
-            puente.setString(4, vehMarca);
-            puente.setString(5, vehEstado);
-            puente.setString(6, vehPrecio);
-            puente.setString(7, vehPlaca);
-            puente.executeUpdate();
-            operacion = true;
-
-        } catch (SQLException e) {
-            Logger.getLogger(VehiculoDAO.class.getName()).log(Level.SEVERE, null, e);
-        } finally {
-            try {
-                this.deneterConexion();
-            } catch (SQLException e) {
-                Logger.getLogger(VehiculoDAO.class.getName()).log(Level.SEVERE, null, e);
-            }
-        }
-
-        return operacion;
-    }*/
 
     public CondicionesVO consultarSolicitud (String Solicitud){
         CondicionesVO conVO = null;
