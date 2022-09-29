@@ -17,7 +17,7 @@
   padding-left: 18px;
   padding-right: 30px;
   position: relative;
-  text-align: left !important;
+  text-align: left;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   -webkit-user-select: none;
@@ -41,8 +41,8 @@
   .nice-select.wide {
     width: 100%; }
     .nice-select.wide .list {
-      left: 0 !important;
-      right: 0 !important; }
+      left: 0;
+      right: 0; }
   .nice-select.right {
     float: right; }
     .nice-select.right .list {
@@ -81,7 +81,7 @@
     transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
     z-index: 9; }
     .nice-select .list:hover .option:not(:hover) {
-      background-color: transparent !important; }
+      background-color: transparent; }
   .nice-select .option {
     cursor: pointer;
     font-weight: 400;
