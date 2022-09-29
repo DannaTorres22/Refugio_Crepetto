@@ -17,9 +17,9 @@ import java.util.logging.Logger;
 public class RolDAO extends ConexionBd 
 {
     //1. Declarar variables
-    private Connection conexion;
-    private PreparedStatement puente;
-    private ResultSet mensajero;
+    public Connection conexion;
+    public PreparedStatement puente;
+    public ResultSet mensajero;
 
     private boolean operacion = false;
     private String sql;
