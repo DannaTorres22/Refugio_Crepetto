@@ -1,20 +1,19 @@
 function validar(){
-    let usuario = document.getElementById('usuario').value;
-    let fecha = document.getElementById('fecha').value;
+   
     let nombre = document.getElementById('nombre').value;
     let edad = document.getElementById('edad').value;
     let raza = document.getElementById('raza').value;
     let tipo = document.getElementById('tipo').value;
-    let estado = document.getElementById('estado').value;
+  
    
     
-    if (usuario == 5 || fecha === "" || nombre === "" || edad === "" || raza === "" || tipo === 2 || estado === 3) {
+    if ( nombre === "" || edad === "" || raza === "" || tipo === "Selecciona..") {
         Swal.fire({icon: 'error',
                   title: 'Todos los campos son obligatorios'});
         return false;
     }
     
-    else if(nombre.length<4){
+    if(nombre.length<4){
         Swal.fire({icon: 'error',
                   title: 'El nombre esta muy corto',
                   text: 'Por favor ingresa un nombre valido'});

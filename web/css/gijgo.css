@@ -384,7 +384,7 @@ ul.gj-list-md li.disabled>[data-role="wrapper"]>[data-role="display"] {
 
 .gj-icon {
     /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'gijgo-material';
+    font-family: 'gijgo-material' !important;
     font-size: 24px;
     speak: none;
     font-style: normal;

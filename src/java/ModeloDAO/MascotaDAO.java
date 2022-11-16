@@ -9,13 +9,21 @@ package ModeloDAO;
 import ModeloVO.MascotaVO;
 import Util.ConexionBd;
 import Util.Crud;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Sena
@@ -30,19 +38,83 @@ public class MascotaDAO extends ConexionBd implements Crud
 
     private boolean operacion = false;
     private String sql;
+    private Blob mysql;
 
-    private String idMascota="",
-            idUsuario="",
-            nombre="",
-            edad="",
-            raza="",
-            tipo="",
-            estadoMascota="";
-
+    private String idMascota="", idUsuario="", fechaIngreso="",foto="",  nombre="",  edad="", raza="", tipo="", estadoMascota="";
     public MascotaDAO() {
     }
     
+   public ArrayList <MascotaVO>listar()
+    {
+        ArrayList<MascotaVO>listaMascotas = new ArrayList<>();
+        
+        try 
+        {
+            conexion = this.obtenerConexion();
+            /*SELECT usuario.correoUsuario, mascota.nombre, mascota.edad, mascota.raza, mascota.tipo, mascota.estadoMascota FROM mascota INNER JOIN usuario ON mascota.idUsuario = usuario.idUsuario*/
+           sql = "SELECT mascota.idMascota, usuario.correoUsuario, mascota.fechaIngreso, mascota.foto, mascota.nombre, mascota.edad, mascota.raza, mascota.tipo, mascota.estadoMascota FROM mascota INNER JOIN usuario ON mascota.idUsuario = usuario.idUsuario where estadoMascota='Disponible'";
+           puente = conexion.prepareStatement(sql);
+           mensajero = puente.executeQuery();
+           while(mensajero.next())
+           {
+               MascotaVO masVO = new MascotaVO();
+                      masVO.setIdMascota(mensajero.getString(1));
+                      masVO.setIdUsuario(mensajero.getString(2));
+                      masVO.setFechaIngreso(mensajero.getString(3));
+                      masVO.setFoto(mensajero.getBinaryStream(4));
+                      masVO.setNombre(mensajero.getString(5));
+                      masVO.setEdad(mensajero.getString(6));
+                      masVO.setRaza(mensajero.getString(7));
+                      masVO.setTipo(mensajero.getString(8));
+                      masVO.setEstadoMascota(mensajero.getString(9));
+               
+                      
+               listaMascotas.add(masVO);
+           }
+        } catch (SQLException e) 
+        {
+            Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally
+        {
+            try 
+            {
+                this.cerrarConexion();
+            } catch (SQLException e) 
+            {
+                Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return listaMascotas;
+    }
+   
+   public void listarImg(String idMascota, HttpServletResponse response){
+       String sql="select * from mascota where idMascota="+idMascota;
+       InputStream inputStream=null;
+       OutputStream outputStream=null;
+       BufferedInputStream bufferedInputStream=null;
+       BufferedOutputStream bufferedOutputStream=null;
+       try {
+           outputStream=response.getOutputStream();
+           conexion = this.obtenerConexion();
+            puente = conexion.prepareStatement(sql);
+           mensajero = puente.executeQuery();
+           if (mensajero.next()) { 
+               inputStream=mensajero.getBinaryStream("foto");
+  
+           }
+           bufferedInputStream=new BufferedInputStream(inputStream);
+           bufferedOutputStream=new BufferedOutputStream(outputStream);
+           int i=0;
+           while ((i=bufferedInputStream.read())!=-1) {               
+               bufferedOutputStream.write (i);
+           }
+       } catch (Exception e) {
+       }
+   }
+    
     //2. Método principal para recibir datos del VO
+   /*
     public MascotaDAO(MascotaVO masVO) {
         super();
         //2.1 Conectarse
@@ -52,6 +124,8 @@ public class MascotaDAO extends ConexionBd implements Crud
             //2.2 Traigo los datos del VO
             idMascota = masVO.getIdMascota();
             idUsuario = masVO.getIdUsuario();
+            fechaIngreso = masVO.getFechaIngreso();
+            foto = masVO.getFoto();
             nombre = masVO.getNombre();
             edad = masVO.getEdad();
             raza = masVO.getRaza();
@@ -62,19 +136,18 @@ public class MascotaDAO extends ConexionBd implements Crud
             Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-
+*/
     @Override
     public boolean agregarRegistro() {
 
         try {
-            sql = "insert into mascota (idUsuario, nombre, fechaIngreso, edad, raza, tipo, estadoMascota) VALUES (?,?,NOW(),?,?,?,?)";
+            sql = "insert into mascota (idUsuario, fechaIngreso,nombre,foto edad, raza, tipo, estadoMascota) VALUES (1,NOW(),?,?,?,?,'Disponible')";
             puente = conexion.prepareStatement(sql);
-            puente.setString(1, idUsuario);
-            puente.setString(2, nombre);
+            puente.setString(1, nombre);
+            puente.setString(2, foto);
             puente.setString(3, edad);
             puente.setString(4, raza);
             puente.setString(5, tipo);
-            puente.setString(6, estadoMascota);
             puente.executeUpdate();
             operacion = true;
         } catch (SQLException e) 
@@ -121,9 +194,10 @@ public class MascotaDAO extends ConexionBd implements Crud
     
     public boolean eliminarRegistro() {
         try {
-            sql = "update mascota set estadoMascota='Disponible' where estadoMascota='Adoptado'";
+            sql = "update mascota set estadoMascota='Adoptado' where idMascota=?";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, estadoMascota);
+            puente.setString(2, idMascota);
             puente.executeUpdate();
             operacion = true;
 
@@ -150,8 +224,8 @@ public class MascotaDAO extends ConexionBd implements Crud
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
                 masVO = new MascotaVO(mensajero.getString(1), mensajero.getString(2),
-                        mensajero.getString(3), mensajero.getString(4), mensajero.getString(5),
-                        mensajero.getString(6), mensajero.getString(7), mensajero.getString(8));
+                        mensajero.getString(3), mensajero.getBinaryStream(4), mensajero.getString(5),
+                        mensajero.getString(6), mensajero.getString(7), mensajero.getString(8),mensajero.getString(9));
             }
         } catch (Exception e) {
             Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -164,7 +238,8 @@ public class MascotaDAO extends ConexionBd implements Crud
         }
         return masVO;
     }
-    
+   
+    /*
    public ArrayList <MascotaVO>listar()
     {
         ArrayList<MascotaVO>listaMascotas = new ArrayList<>();
@@ -172,8 +247,8 @@ public class MascotaDAO extends ConexionBd implements Crud
         try 
         {
             conexion = this.obtenerConexion();
-            /*SELECT usuario.correoUsuario, mascota.nombre, mascota.edad, mascota.raza, mascota.tipo, mascota.estadoMascota FROM mascota INNER JOIN usuario ON mascota.idUsuario = usuario.idUsuario*/
-           sql = "SELECT mascota.idMascota, usuario.correoUsuario, mascota.fechaIngreso, mascota.nombre, mascota.edad, mascota.raza, mascota.tipo, mascota.estadoMascota FROM mascota INNER JOIN usuario ON mascota.idUsuario = usuario.idUsuario";
+            /*SELECT usuario.correoUsuario, mascota.nombre, mascota.edad, mascota.raza, mascota.tipo, mascota.estadoMascota FROM mascota INNER JOIN usuario ON mascota.idUsuario = usuario.idUsuario  
+           sql = "SELECT mascota.idMascota, usuario.correoUsuario, mascota.fechaIngreso, mascota.foto, mascota.nombre, mascota.edad, mascota.raza, mascota.tipo, mascota.estadoMascota FROM mascota INNER JOIN usuario ON mascota.idUsuario = usuario.idUsuario where estadoMascota='Disponible'";
            puente = conexion.prepareStatement(sql);
            mensajero = puente.executeQuery();
            while(mensajero.next())
@@ -186,7 +261,9 @@ public class MascotaDAO extends ConexionBd implements Crud
                        mensajero.getString(5),
                        mensajero.getString(6),
                        mensajero.getString(7),
-                       mensajero.getString(8));
+                       mensajero.getString(8),
+                       mensajero.getString(9)
+                       );
                listaMascotas.add(masVO);
            }
         } catch (SQLException e) 
@@ -205,6 +282,6 @@ public class MascotaDAO extends ConexionBd implements Crud
         }
         return listaMascotas;
     }
-   
-   
+     */
+ 
 }

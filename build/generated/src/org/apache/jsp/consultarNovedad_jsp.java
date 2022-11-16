@@ -64,6 +64,7 @@ public final class consultarNovedad_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                <input type=\"text\" name=\"textIdNovedad\" class=\"validate\" placeholder=\"Nombre de la novedad\">\n");
       out.write("                <button class=\"waves-effect waves-light btn\" >Consultar</button>\n");
       out.write("                <input type=\"hidden\" value=\"3\" name=\"opcion\">        \n");
+      out.write("                <a href=\"registrarNovedad.jsp\" class=\"btn btn-info\" >Registrar novedad</a><br><br>\n");
       out.write("                <br><br>\n");
       out.write("                ");
             if (request.getAttribute("MensajeError") != null) { 
@@ -86,7 +87,7 @@ public final class consultarNovedad_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                <table  class=\"striped\">\n");
       out.write("                    <thead>\n");
       out.write("                        <tr>\n");
-      out.write("                            <th>Id mascota</th>\n");
+      out.write("                            <th>Nombre de la mascota</th>\n");
       out.write("                            <th>Nombre de la novedad</th>\n");
       out.write("                            <th>Descripcion de la novedad</th>\n");
       out.write("                            <th>Fecha Novedad</th>\n");

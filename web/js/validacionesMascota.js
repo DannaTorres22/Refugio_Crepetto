@@ -8,7 +8,7 @@ function validar(){
     let estado = document.getElementById('estado').value;
    
     
-    if (usuario === 5 || fecha === "" || nombre === "" || edad === "" || raza === "" || tipo === 2 || estado === 3) {
+    if (usuario == 5 || fecha === "" || nombre === "" || edad === "" || raza === "" || tipo === 2 || estado === 3) {
         Swal.fire({icon: 'error',
                   title: 'Todos los campos son obligatorios'});
         return false;

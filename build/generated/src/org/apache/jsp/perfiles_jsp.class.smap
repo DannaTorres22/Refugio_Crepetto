@@ -1,0 +1,18 @@
+SMAP
+perfiles_jsp.java
+JSP
+*S JSP
+*F
++ 0 perfiles.jsp
+perfiles.jsp
+*L
+5,72:49
+77,8:122
+84,4:130
+88:134,3
+89:137
+90,5:138,3
+95,4:153
+99:157,3
+100,4:160
+*E

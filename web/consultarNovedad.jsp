@@ -7,6 +7,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="ModeloDAO.NovedadDAO"%>
 <%@page import="ModeloVO.NovedadVO"%>
+<%@include file="sesiones.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
