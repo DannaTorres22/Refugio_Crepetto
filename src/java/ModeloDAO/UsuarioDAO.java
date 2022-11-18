@@ -20,8 +20,8 @@ import java.util.logging.Logger;
  *
  * @author julia_000
  */
-public class UsuarioDAO extends ConexionBd implements Crud
-{
+public class UsuarioDAO extends ConexionBd implements Crud {
+
     //1. Declarar
     private Connection conexion;
     private PreparedStatement puente;
@@ -30,25 +30,30 @@ public class UsuarioDAO extends ConexionBd implements Crud
     private boolean operacion = false;
     private String sql;
 
-    public String idUsuario = "",
-            correoUsuario = "",
-            password = "",
-            rolId="";
-    
+    public String idUsuario = "", nombre = "", apellido = "", fechaNacimiento = "", tipoDocumento = "", numDocumento = "", direccion = "", celular = "", estadoUsuario = "", correoUsuario = "", password = "", rolId = "";
+
     public UsuarioDAO() {
     }
-    public UsuarioDAO(UsuarioVO usuVO){
+
+    public UsuarioDAO(UsuarioVO usuVO) {
         super();
-        try 
-        {
+        try {
             conexion = this.obtenerConexion();
             idUsuario = usuVO.getIdUsuario();
+            nombre = usuVO.getNombre();
+            apellido = usuVO.getApellido();
+            fechaNacimiento = usuVO.getFechaNacimiento();
+            tipoDocumento = usuVO.getTipoDocumento();
+            numDocumento = usuVO.getNumDocumento();
+            direccion = usuVO.getDireccion();
+            celular = usuVO.getCelular();
+            estadoUsuario = usuVO.getEstadoUsuario();
             correoUsuario = usuVO.getCorreoUsuario();
             password = usuVO.getPassword();
-            
-            if(usuVO.getRolId() != null){
+/*
+            if (usuVO.getRolId() != null) {
                 rolId = usuVO.getRolId();
-            }else{
+            } else {
                 // Por defecto el usuario se registra con el rol de adoptante, para ello
                 // se obtiene el id rol de la base de datos y se le asigna en el registro al
                 // al usuario a su atributo correspondiente :rolId
@@ -58,37 +63,53 @@ public class UsuarioDAO extends ConexionBd implements Crud
                 if (rs.next()) {
                     rolId = rs.getString("rolId");
                 }
-            }
+            }*/
             
-        } catch (Exception e) 
-        {
+            
+
+        } catch (Exception e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+
     @Override
-    public boolean agregarRegistro() 
-    {
-        try 
-        {
-            sql = "insert into usuario values (?,?,?,?)";
+    public boolean agregarRegistro() {
+        try {
+             sql = "insert into usuario (nombre,apellido, fechaNacimiento, tipoDocumento, numDocumento, direccion, celular, estadoUsuario, correoUsuario, password,rolId) VALUES (?,?,?,?,?,?,?,'Activo',?,?,2)";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, nombre);
+            puente.setString(2, apellido);
+            puente.setString(3, fechaNacimiento);
+            puente.setString(4, tipoDocumento);
+            puente.setString(5, numDocumento);
+            puente.setString(6, direccion);
+            puente.setString(7, celular);
+            puente.setString(8, correoUsuario);
+            puente.setString(9, password);
+ 
+            /*
+            sql = "insert into usuario values (?,?,?,?,?,?,?,?,?,?,?)";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, idUsuario);
-            puente.setString(2, correoUsuario);
-            puente.setString(3, password);
-            puente.setString(4, rolId);
-           
+            puente.setString(2, nombre);
+            puente.setString(3, apellido);
+            puente.setString(4, fechaNacimiento);
+            puente.setString(5, tipoDocumento);
+            puente.setString(6, numDocumento);
+            puente.setString(7, direccion);
+            puente.setString(8, celular);
+            puente.setString(9, correoUsuario);
+            puente.setString(10, password);
+            puente.setString(11, rolId);*/
+
             puente.executeUpdate();
             operacion = true;
-        } catch (SQLException e) 
-        {
+        } catch (SQLException e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
-        }finally
-        {
-            try 
-            {
+        } finally {
+            try {
                 this.cerrarConexion();
-            } catch (SQLException e) 
-            {
+            } catch (SQLException e) {
                 Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
             }
         }
@@ -97,48 +118,27 @@ public class UsuarioDAO extends ConexionBd implements Crud
 
     @Override
     public boolean actualizarRegistro() {
-       try {
+        try {
             sql = "update usuario set correoUsuario=?,password=? where idUsuario=?";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, idUsuario);
-            puente.setString(2, correoUsuario);
-            puente.setString(3, password);
+            puente.setString(2, nombre);
+            puente.setString(3, apellido);
+            puente.setString(4, fechaNacimiento);
+            puente.setString(5, tipoDocumento);
+            puente.setString(6, numDocumento);
+            puente.setString(7, direccion);
+            puente.setString(8, celular);
+            puente.setString(9, estadoUsuario);
+            puente.setString(10, correoUsuario);
+            puente.setString(11, password);
+            puente.setString(12, rolId);
             puente.executeUpdate();
             operacion = true;
-            
 
-        } catch (SQLException e) 
-        {
+        } catch (SQLException e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
-        }finally
-        {
-            try 
-            {
-                this.cerrarConexion();
-            } catch (SQLException e) 
-            {
-                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
-            }
-        }
-        return operacion;
-    }
-    
-    public boolean inicioSesion(String correoUsuario, String password) {
-        try {
-            conexion = this.obtenerConexion();
-            sql =("SELECT * FROM usuario WHERE CORREOUSUARIO=? AND PASSWORD=?");
-            puente = conexion.prepareStatement(sql);
-            puente.setString(1, correoUsuario);
-            puente.setString(2, password);
-            
-            mensajero = puente.executeQuery();
-            if (mensajero.next()) {
-                rolId = mensajero.getString("rolId");
-                operacion = true;
-            }
-        }  catch (Exception e) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
-        }finally {
+        } finally {
             try {
                 this.cerrarConexion();
             } catch (SQLException e) {
@@ -147,29 +147,59 @@ public class UsuarioDAO extends ConexionBd implements Crud
         }
         return operacion;
     }
-    
-   
-    
-    public ArrayList <UsuarioVO>listar(){
-        ArrayList<UsuarioVO>listaUsuarios = new ArrayList<>();
-        
+
+    public boolean inicioSesion(String correoUsuario, String password) {
         try {
             conexion = this.obtenerConexion();
-           sql = "select * from usuario;";
-           puente = conexion.prepareStatement(sql);
-           mensajero = puente.executeQuery();
-           while(mensajero.next()){
-               UsuarioVO usuVO = new UsuarioVO(
-                       mensajero.getString(1),
-                       mensajero.getString(2),
-                       mensajero.getString(3),
-                       mensajero.getString(4));
+            sql = ("SELECT * FROM usuario WHERE CORREOUSUARIO=? AND PASSWORD=?");
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, correoUsuario);
+            puente.setString(2, password);
+
+            mensajero = puente.executeQuery();
+            if (mensajero.next()) {
+                rolId = mensajero.getString("rolId");
+                operacion = true;
+            }
+        } catch (Exception e) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException e) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return operacion;
+    }
+
+    public ArrayList<UsuarioVO> listar() {
+        ArrayList<UsuarioVO> listaUsuarios = new ArrayList<>();
+
+        try {
+            conexion = this.obtenerConexion();
+            sql = "select * from usuario;";
+            puente = conexion.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                UsuarioVO usuVO = new UsuarioVO(
+                        mensajero.getString(1),
+                        mensajero.getString(2),
+                        mensajero.getString(3),
+                        mensajero.getString(4),
+                        mensajero.getString(5),
+                        mensajero.getString(6),
+                        mensajero.getString(7),
+                        mensajero.getString(8),
+                        mensajero.getString(9),
+                        mensajero.getString(10),
+                        mensajero.getString(11),
+                        mensajero.getString(12));
                listaUsuarios.add(usuVO);
-           }
+            }
         } catch (SQLException e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-        finally{
+        } finally {
             try {
                 this.cerrarConexion();
             } catch (SQLException e) {
@@ -178,7 +208,7 @@ public class UsuarioDAO extends ConexionBd implements Crud
         }
         return listaUsuarios;
     }
-    
+
     private void deneterConexion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -186,6 +216,5 @@ public class UsuarioDAO extends ConexionBd implements Crud
     public boolean eliminarRegistro() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 
 }

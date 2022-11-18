@@ -5,32 +5,44 @@
  */
 package ModeloVO;
 
+import java.io.InputStream;
+
 /**
  *
  * @author julia_000
  */
 public class MascotaVO {
-    private String idMascota,
-            idUsuario,
-            fechaIngreso,
-            nombre,
-            edad,
-            raza,
-            tipo,
-            estadoMascota;
 
-    public MascotaVO(String idMascota,
-            String idUsuario,
-            String fechaIngreso,
-            String nombre,
-            String edad,
-            String raza,
-            String tipo,
-            String estadoMascota) {
-        
+    private String idMascota;
+    private String idUsuario;
+    private String fechaIngreso;
+    private InputStream foto;
+    private String url;
+    private String nombre;
+    private String edad;
+    private String raza;
+    private String tipo;
+    private String estadoMascota;
+    private String urlFoto;
+
+    public MascotaVO(String idMascota, String idUsuario, String fechaIngreso, InputStream foto, String url,String nombre, String edad, String raza, String tipo, String estadoMascota) {
         this.idMascota = idMascota;
         this.idUsuario = idUsuario;
         this.fechaIngreso = fechaIngreso;
+        this.foto = foto;
+         this.url = url;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.raza = raza;
+        this.tipo = tipo;
+        this.estadoMascota = estadoMascota;
+    }
+
+    public MascotaVO(String idUsuario, String fechaIngreso, InputStream foto,String url ,String nombre, String edad, String raza, String tipo, String estadoMascota) {
+        this.idUsuario = idUsuario;
+        this.fechaIngreso = fechaIngreso;
+        this.foto = foto;
+         this.url = url;
         this.nombre = nombre;
         this.edad = edad;
         this.raza = raza;
@@ -40,26 +52,6 @@ public class MascotaVO {
 
     public MascotaVO() {
     }
-
-    public MascotaVO(String idUsuario,
-            String fechaIngreso,
-            String nombre,
-            String edad,
-            String raza,
-            String tipo,
-            String estadoMascota) {
-        
-        this.idUsuario = idUsuario;
-        this.fechaIngreso = fechaIngreso;
-        this.nombre = nombre;
-        this.edad = edad;
-        this.raza = raza;
-        this.tipo = tipo;
-        this.estadoMascota = estadoMascota;
-    }
-
-    
-    
 
     public String getIdMascota() {
         return idMascota;
@@ -84,7 +76,22 @@ public class MascotaVO {
     public void setFechaIngreso(String fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
+
+    public InputStream getFoto() {
+        return foto;
+    }
+
+    public void setFoto(InputStream foto) {
+        this.foto = foto;
+    }
     
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public String getNombre() {
         return nombre;
@@ -125,5 +132,17 @@ public class MascotaVO {
     public void setEstadoMascota(String estadoMascota) {
         this.estadoMascota = estadoMascota;
     }
+
+    public String getUrlFoto() {
+        return urlFoto;
+    }
+
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
+    }
+    
+    
+    
+    
 
 }

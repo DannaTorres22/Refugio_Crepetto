@@ -30,10 +30,7 @@ public class NovedadDAO extends ConexionBd implements Crud {
     private boolean operacion = false;
     private String sql;
 
-    private String idNovedad = "",
-            idMascota = "",
-            tipoNovedad = "",
-            observacionNovedad = "";
+    private String idNovedad = "", idMascota = "", tipoNovedad = "", observacionNovedad = "", fechaNovedad = "";
 
     public NovedadDAO() {
     }
@@ -46,7 +43,7 @@ public class NovedadDAO extends ConexionBd implements Crud {
             idMascota = novVO.getIdMascota();
             tipoNovedad = novVO.getTipoNovedad();
             observacionNovedad = novVO.getObservacionNovedad();
-       
+            fechaNovedad = novVO.getFechaNovedad();
 
         } catch (Exception e) {
             Logger.getLogger(NovedadDAO.class.getName()).log(Level.SEVERE, null, e);

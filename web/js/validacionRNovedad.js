@@ -4,7 +4,7 @@ function validar(){
     let descripcion = document.getElementById('descripcion').value;
    
     
-    if (mascota === 4 || nombreN === "" || descripcion === "") {
+    if (mascota === "Selecciona.." || nombreN === "" || descripcion === "") {
         Swal.fire({icon: 'error',
                   title: 'Todos los campos son obligatorios'});
         return false;
@@ -47,6 +47,8 @@ let registrar = document.getElementById('registrar')
         Swal.fire({icon: 'success',
                   title: 'La novedad se registro ',
                   timer: 5000});
+        
+        return true;
         
     });
  

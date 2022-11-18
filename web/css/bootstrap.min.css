@@ -227,6 +227,15 @@ img {
     border-style: none
 }
 
+.imgsesion{
+vertical-align: middle;
+    border-style: none;
+    width: 15rem;
+    margin-top: -4px;
+    margin-left: -4rem;
+    margin-bottom: -1rem;
+}
+
 svg:not(:root) {
     overflow: hidden
 }
@@ -2624,9 +2633,12 @@ select.form-control-lg:not([size]):not([multiple]) {
 .btn:disabled {
     opacity: .65
 }
-
+a{
+    text-decoration: none;
+}
 .btn:not(:disabled):not(.disabled) {
-    cursor: pointer
+    cursor: pointer;
+    border-radius:20px;
 }
 
 .btn:not(:disabled):not(.disabled).active,

@@ -33,7 +33,7 @@ function validar(){
 let registrar = document.getElementById('registrar')
          registrar.addEventListener('click', function (){
         Swal.fire({icon: 'success',
-                  title: 'La novedad se registro ',
+                  title: '¡Te has registrado!',
                   timer: 5000});
         
         
