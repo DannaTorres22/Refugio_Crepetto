@@ -93,10 +93,10 @@ public class UsuarioControlador extends HttpServlet {
                     //condicion 
                     if (rolId_is.equals("1")) // Rol Administrador
                     {
-                        request.getRequestDispatcher("consultarMascota.jsp").forward(request, response);
+                        request.getRequestDispatcher("registrarRespuestas.jsp").forward(request, response);
                     } else if (rolId_is.equals("2")) // Rol Adoptante
                     {
-                        request.getRequestDispatcher("formulario.jsp").forward(request, response);
+                        request.getRequestDispatcher("registrarRespuestas.jsp").forward(request, response);
                     }
                 } //los datos ingresados no son validos
                 else {

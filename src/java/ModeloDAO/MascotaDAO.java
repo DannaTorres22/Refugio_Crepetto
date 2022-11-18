@@ -38,9 +38,9 @@ public class MascotaDAO extends ConexionBd implements Crud
 
     private boolean operacion = false;
     private String sql;
-    private Blob mysql;
+    
 
-    private String idMascota="", idUsuario="", fechaIngreso="",foto="",  nombre="",  edad="", raza="", tipo="", estadoMascota="";
+    private String idMascota="", idUsuario="", fechaIngreso="", url="", nombre="",  edad="", raza="", tipo="", estadoMascota="";
     public MascotaDAO() {
     }
     
@@ -61,7 +61,9 @@ public class MascotaDAO extends ConexionBd implements Crud
                       masVO.setIdMascota(mensajero.getString(1));
                       masVO.setIdUsuario(mensajero.getString(2));
                       masVO.setFechaIngreso(mensajero.getString(3));
-                      masVO.setFoto(mensajero.getBinaryStream(4));
+                      masVO.setUrl(mensajero.getString(4));
+//                      masVO.setUrl("http://localhost:8080/gus.png");
+                    //  masVO.setFoto(mensajero.getBinaryStream(4));
                       masVO.setNombre(mensajero.getString(5));
                       masVO.setEdad(mensajero.getString(6));
                       masVO.setRaza(mensajero.getString(7));
@@ -70,6 +72,7 @@ public class MascotaDAO extends ConexionBd implements Crud
                
                       
                listaMascotas.add(masVO);
+               System.out.println(masVO.toString());
            }
         } catch (SQLException e) 
         {
@@ -87,10 +90,10 @@ public class MascotaDAO extends ConexionBd implements Crud
         }
         return listaMascotas;
     }
-   
+   /*
    public void listarImg(String idMascota, HttpServletResponse response){
        String sql="select * from mascota where idMascota="+idMascota;
-       InputStream inputStream=null;
+     /*  InputStream inputStream=null;
        OutputStream outputStream=null;
        BufferedInputStream bufferedInputStream=null;
        BufferedOutputStream bufferedOutputStream=null;
@@ -112,9 +115,10 @@ public class MascotaDAO extends ConexionBd implements Crud
        } catch (Exception e) {
        }
    }
+   
     
     //2. Método principal para recibir datos del VO
-   /*
+   
     public MascotaDAO(MascotaVO masVO) {
         super();
         //2.1 Conectarse
@@ -135,16 +139,16 @@ public class MascotaDAO extends ConexionBd implements Crud
         {
             Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, e);
         }
-    }
-*/
+    }*/
+
     @Override
     public boolean agregarRegistro() {
 
         try {
-            sql = "insert into mascota (idUsuario, fechaIngreso,nombre,foto edad, raza, tipo, estadoMascota) VALUES (1,NOW(),?,?,?,?,'Disponible')";
+            sql = "insert into mascota (idUsuario, fechaIngreso,nombre,foto, edad, raza, tipo, estadoMascota) VALUES (1,NOW(),?,?,?,?,'Disponible')";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, nombre);
-            puente.setString(2, foto);
+            puente.setString(2, url);
             puente.setString(3, edad);
             puente.setString(4, raza);
             puente.setString(5, tipo);
@@ -225,7 +229,7 @@ public class MascotaDAO extends ConexionBd implements Crud
             while (mensajero.next()) {
                 masVO = new MascotaVO(mensajero.getString(1), mensajero.getString(2),
                         mensajero.getString(3), mensajero.getBinaryStream(4), mensajero.getString(5),
-                        mensajero.getString(6), mensajero.getString(7), mensajero.getString(8),mensajero.getString(9));
+                        mensajero.getString(6), mensajero.getString(7), mensajero.getString(8),mensajero.getString(9),mensajero.getString(10));
             }
         } catch (Exception e) {
             Logger.getLogger(MascotaDAO.class.getName()).log(Level.SEVERE, null, e);

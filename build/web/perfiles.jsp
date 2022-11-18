@@ -8,6 +8,7 @@
 <%@page import="ModeloVO.MascotaVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ModeloDAO.MascotaDAO"%>
+<%@include file="sesiones1.jsp"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,54 +26,17 @@
         <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" href="css/slicknav.css">
         <link rel="stylesheet" href="css/style.css">
-        <link href="css/stylelogin.css" rel="stylesheet" type="text/css"/>
+        
         <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        
         <link href="./css/perfiles.css" rel="stylesheet" type="text/css"/>
-
+        <link href="css/argon-dashboard.css" rel="stylesheet" type="text/css"/>
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <title>JSP Page</title>
     </head>
     <body>
-        <header>
-            <div class="header-area ">
-
-                <div id="sticky-header" class="main-header-area">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-xl-3 col-lg-3">
-                                <div class="logo">
-                                    <a href="index.html">
-                                        <img src="img/logo.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-xl-9 col-lg-9">
-                                <div class="main-menu  d-none d-lg-block">
-                                    <nav>
-                                        <ul id="navigation">
-                                            <li><a href="index.html">Inicio</a></li>
-                                            <li><a href="#nosotros">Nosotros</a></li>
-                                            <li><a href="#modulos">Funcionalidades</a></li>
-                                            <li><a href="#ventajas">Ventajas</a></li>
-                                            <li><a href="contact.html">Contacto</a></li>
-                                            <li><a href="../login-form-17/index.html">Iniciar sesión</a></li>
-                                        </ul>
-
-                                        <a href=""><img src="/anipat/img/i logo.png" alt=""></a>
-                                    </nav>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
+        
         <%
             MascotaVO masVO = new MascotaVO();
             MascotaDAO masDAO = new MascotaDAO();
@@ -85,9 +49,9 @@
         
         <div class="Cards">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="ControladorIMG?idMascota=<%=masVO.getIdMascota()%>" alt="Card image cap" width="200"  >
+                <img class="card-img-top" src="<%=masVO.getUrl()%>" alt="Card image cap" width="200"  >
                 <div class="card-body">
-                    <h5 class="card-title"><%=masVO.getNombre()%></h5>
+                    <h5 class="card-title"><%=masVO.getNombre()%><%=masVO.getUrl()%></h5>
                     <p class="card-text"><%=masVO.getRaza()%> <br>
                         <%=masVO.getEdad()%> años <br>
                     <%=masVO.getTipo()%><br>

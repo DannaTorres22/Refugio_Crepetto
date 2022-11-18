@@ -52,7 +52,7 @@ MascotaDAO masDAO = new MascotaDAO ();
             throws ServletException, IOException {
         
         String idMascota=(request.getParameter("idMascota"));
-         masDAO.listarImg(idMascota, response);
+//         masDAO.listarImg(idMascota, response);
     }
 
     /**

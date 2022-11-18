@@ -1174,6 +1174,7 @@ a:not([href]):not([class]):hover {
     flex: 0 0 auto;
     width: 83.333333%;
   }
+ 
 
   .col-xl-11 {
     flex: 0 0 auto;
@@ -15650,6 +15651,19 @@ label,
 .icon-xl i {
   top: 33px;
   font-size: 2.2rem;
+}
+ .p .nomus {
+    font-size: 17px;
+    margin-left: 18px;
+    color: black;
+}
+.imgsesion{
+vertical-align: middle;
+    border-style: none;
+    width: 15rem;
+    margin-top: -4px;
+    margin-left: -4rem;
+    margin-bottom: -1rem;
 }
 
 .icon-xl.icon-striped {
@@ -35206,3 +35220,7 @@ h1, h2, h3, h4, h5,
  .btn.btn-primaryy.cerrar{ 
     margin-left: 3rem;
     margin-top: 8rem;}
+ 
+ .btn.btn-primary{   margin-top: auto;
+    margin-left: auto;}
+ 

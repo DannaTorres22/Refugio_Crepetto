@@ -24,7 +24,7 @@
       
         <!-- <link rel="stylesheet" href="css/responsive.css"> -->
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        <title>Sesiones</title>
+        <title>sesion admi</title>
     </head>
     <%
         response.setHeader("Pragma", "No-cache");
@@ -49,7 +49,7 @@
                 <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
                 <a class="navbar-brand m-0" href="#" target="_blank">
                     <img src="logo.png" class="navbar-brand-img h-100" alt="main_logo">
-                      <li class="usuario">Usuario <%=correoUsuario%></li>
+                      <li class="usuario"><%=correoUsuario%></li>
                                           
 
                 </a>

@@ -11,7 +11,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-       
         <link rel="stylesheet" href="css/owl.carousel.min.css">
         <link rel="stylesheet" href="css/magnific-popup.css">
         <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -27,40 +26,6 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
       
 
-    <header>
-        <div class="header-area ">
-            <div id="sticky-header" class="main-header-area">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-3 col-lg-3">
-                            <div class="logo">
-                                <a href="index.html">
-                                    <img src="logo.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-xl-9 col-lg-9">
-                            <div class="main-menu  d-none d-lg-block">
-                                <nav>
-                                    <ul id="navigation">
-                                        <li><a  href="dashboard.jsp">Inicio</a></li>
-                                        <li><a href="index.jsp">Cerrar sesión</a></li>
-
-                                    </ul>
-
-
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <title>Registrar Mascota</title>
 
 </head>
@@ -74,7 +39,7 @@
 
                 <div class="form-group col-md-15">
                     <label for="inputEmail4">Foto de la mascota</label>
-                    <input type="file" class="form-control" id="nombre" placeholder="Foto de la mascota" name="textFotoM" >
+                    <input type="file" class="form-control" id="file" placeholder="Foto de la mascota" name="file" >
                 </div>
                 <div class="form-group col-md-15">
                     <label for="inputEmail4">Nombre de la mascota</label>
@@ -146,7 +111,7 @@
             </body>
         <script src="https://cdn.jsdelivr.net.npm.sweetalert2@9"></script>
 
-        <script src="js/validacionRMascota.js" type="text/javascript"></script>
+       
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
