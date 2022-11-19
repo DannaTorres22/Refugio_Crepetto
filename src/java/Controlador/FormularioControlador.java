@@ -5,8 +5,8 @@
  */
 package Controlador;
 
-import ModeloDAO.NovedadDAO;
-import ModeloVO.NovedadVO;
+import ModeloDAO.FormularioDAO;
+import ModeloVO.FormularioVO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author julia_000
  */
-@WebServlet(name = "NovedadControlador", urlPatterns = {"/Novedad"})
-public class NovedadControlador extends HttpServlet {
+@WebServlet(name = "FormularioControlador", urlPatterns = {"/Formulario"})
+public class FormularioControlador extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,49 +34,59 @@ public class NovedadControlador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         //1. datos de la vista
-        String idNovedad = request.getParameter("textIdNovedad");
-        String idMascota = request.getParameter("textIdMascota");
-        String tipoNovedad = request.getParameter("textTipoNovedad");
-        String observacionNovedad = request.getParameter("textObservacionNovedad");
-        String fechaNovedad = request.getParameter("textFechaNovedad");
+       String idFormulario = request.getParameter("textIdFormulario");
+        String idUsuario = request.getParameter("textIdUsuario");
+          String idMascota = request.getParameter("textIdMascota");
+        String p1 = request.getParameter("textP1");
+        String p2 = request.getParameter("textP2");
+        String p3 = request.getParameter("textP3");
+        String p4 = request.getParameter("textP4");
+        String p5 = request.getParameter("textP5");
+        String p6 = request.getParameter("textP6");
+        String p7 = request.getParameter("textP7");
+        String p8 = request.getParameter("textP8");
+        String p9 = request.getParameter("textP9");
+        String p10 = request.getParameter("textP10");
+        String estadoFormulario = request.getParameter("textEstadoFormulario");
+        String fechaRegistro = request.getParameter("textFechaRegistro");
 
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
         //2.instanciar VO // infromacion
-        NovedadVO novVO = new NovedadVO(idNovedad, idMascota, tipoNovedad, observacionNovedad, fechaNovedad);
+        FormularioVO formVO = new FormularioVO(idFormulario, idUsuario, idMascota, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, estadoFormulario, fechaRegistro);
 
         //3. instanciar Dao //opereaciones
-        NovedadDAO novDAO = new NovedadDAO(novVO);
+        FormularioDAO formDAO = new FormularioDAO(formVO);
 
         //4. administrar operaciones
         switch (opcion) {
             case 1:  //agregar registro
-                if (novDAO.agregarRegistro()) {
-                    request.setAttribute("MensajeExito", "La novedad se registro");
+                if (formDAO.agregarRegistro()) {
+                    request.setAttribute("MensajeExito", "La Formulario se registro");
                 } else {
-                    request.setAttribute("MensajeError", "La novedad no se pudo registrar");
+                    request.setAttribute("MensajeError", "La Formulario no se pudo registrar");
                 }
-                request.getRequestDispatcher("registrarNovedad.jsp").forward(request, response);
+                request.getRequestDispatcher("registrarRespuestas.jsp").forward(request, response);
                 break;
 
             case 2:  //actualizar registro
-                if (novDAO.actualizarRegistro()) {
-                    request.setAttribute("MensajeExito", "La novedad se actualizo");
+                if (formDAO.actualizarRegistro()) {
+                    request.setAttribute("MensajeExito", "La Formulario se actualizo");
                 } else {
-                    request.setAttribute("MensajeError", "La novedad no se pudo actualizar");
+                    request.setAttribute("MensajeError", "La Formulario no se pudo actualizar");
                 }
-                request.getRequestDispatcher("consultarNovedad.jsp").forward(request, response);
+                request.getRequestDispatcher("consultarFormulario.jsp").forward(request, response);
                 break;
 
-            case 3://Consultar Novedad
-                novVO = novDAO.consultarID(idNovedad);
-                if (novVO != null) {
-                    request.setAttribute("datosConsultados", novVO);
-                    request.getRequestDispatcher("actualizarNovedad.jsp").forward(request, response);
+            case 3:
+                formVO = formDAO.consultarID(idFormulario);
+                if (formVO != null) {
+                    request.setAttribute("datosConsultados", formVO);
+                    request.getRequestDispatcher("actualizarFormulario.jsp").forward(request, response);
                 } else {
                     request.setAttribute("MensajeError", "No hay resultados que coincidan con tu busqueda");
 
-                    request.getRequestDispatcher("consultarNovedad.jsp").forward(request, response);
+                    request.getRequestDispatcher("consultarFormulario.jsp").forward(request, response);
                 }
                 break;
         }

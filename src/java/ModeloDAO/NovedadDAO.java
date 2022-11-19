@@ -30,10 +30,7 @@ public class NovedadDAO extends ConexionBd implements Crud {
     private boolean operacion = false;
     private String sql;
 
-    private String idNovedad = "",
-            idMascota = "",
-            tipoNovedad = "",
-            observacionNovedad = "";
+    private String idNovedad = "", idMascota = "", tipoNovedad = "", observacionNovedad = "", fechaNovedad = "";
 
     public NovedadDAO() {
     }
@@ -46,7 +43,7 @@ public class NovedadDAO extends ConexionBd implements Crud {
             idMascota = novVO.getIdMascota();
             tipoNovedad = novVO.getTipoNovedad();
             observacionNovedad = novVO.getObservacionNovedad();
-       
+            fechaNovedad = novVO.getFechaNovedad();
 
         } catch (Exception e) {
             Logger.getLogger(NovedadDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -103,7 +100,7 @@ public class NovedadDAO extends ConexionBd implements Crud {
 
         try {
             conexion = this.obtenerConexion();
-            sql = "SELECT mascota.nombre, novedad.tipoNovedad, novedad.observacion, novedad.fechaNovedad FROM novedad INNER JOIN mascota ON novedad.idMascota = mascota.idMascota;";
+            sql = "SELECT novedad.idNovedad,mascota.nombre, novedad.tipoNovedad, novedad.observacion, novedad.fechaNovedad FROM novedad INNER JOIN mascota ON novedad.idMascota = mascota.idMascota;";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
@@ -111,7 +108,9 @@ public class NovedadDAO extends ConexionBd implements Crud {
                         mensajero.getString(1),
                         mensajero.getString(2),
                         mensajero.getString(3),
-                        mensajero.getString(4));
+                        mensajero.getString(4),
+                        mensajero.getString(5)
+                );
                 listaNovedad.add(novVO);
             }
         } catch (SQLException e) {
