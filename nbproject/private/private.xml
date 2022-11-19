@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/julia_000/Documents/NetBeansProjects/refugio/web/registrarMascota.jsp</file>
-            <file>file:/C:/Users/julia_000/Documents/NetBeansProjects/refugio/web/js/validacionesMascota.js</file>
-            <file>file:/C:/Users/julia_000/Documents/NetBeansProjects/refugio/src/java/Controlador/MascotaControlador.java</file>
-            <file>file:/C:/Users/julia_000/Documents/NetBeansProjects/refugio/web/registrarUsuario.jsp</file>
+            <file>file:/C:/Users/danna/OneDrive/Documentos/NetBeansProjects/refugio/web/consultarUsuario.jsp</file>
+            <file>file:/C:/Users/danna/OneDrive/Documentos/NetBeansProjects/refugio/web/registrarUsuario.jsp</file>
+            <file>file:/C:/Users/danna/OneDrive/Documentos/NetBeansProjects/refugio/src/java/Controlador/UsuarioControlador.java</file>
+            <file>file:/C:/Users/danna/OneDrive/Documentos/NetBeansProjects/refugio/src/java/ModeloVO/UsuarioVO.java</file>
         </group>
     </open-files>
 </project-private>
