@@ -100,7 +100,7 @@ public class NovedadDAO extends ConexionBd implements Crud {
 
         try {
             conexion = this.obtenerConexion();
-            sql = "SELECT mascota.nombre, novedad.tipoNovedad, novedad.observacion, novedad.fechaNovedad FROM novedad INNER JOIN mascota ON novedad.idMascota = mascota.idMascota;";
+            sql = "SELECT novedad.idNovedad,mascota.nombre, novedad.tipoNovedad, novedad.observacion, novedad.fechaNovedad FROM novedad INNER JOIN mascota ON novedad.idMascota = mascota.idMascota;";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
@@ -108,7 +108,9 @@ public class NovedadDAO extends ConexionBd implements Crud {
                         mensajero.getString(1),
                         mensajero.getString(2),
                         mensajero.getString(3),
-                        mensajero.getString(4));
+                        mensajero.getString(4),
+                        mensajero.getString(5)
+                );
                 listaNovedad.add(novVO);
             }
         } catch (SQLException e) {

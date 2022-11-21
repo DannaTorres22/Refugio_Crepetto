@@ -50,20 +50,8 @@ public class UsuarioDAO extends ConexionBd implements Crud {
             estadoUsuario = usuVO.getEstadoUsuario();
             correoUsuario = usuVO.getCorreoUsuario();
             password = usuVO.getPassword();
-/*
-            if (usuVO.getRolId() != null) {
-                rolId = usuVO.getRolId();
-            } else {
-                // Por defecto el usuario se registra con el rol de adoptante, para ello
-                // se obtiene el id rol de la base de datos y se le asigna en el registro al
-                // al usuario a su atributo correspondiente :rolId
-                String rolIdsql = "SELECT rolId FROM rol where rolTipo='Adoptante';";
-                PreparedStatement ps = conexion.prepareStatement(rolIdsql);
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    rolId = rs.getString("rolId");
-                }
-            }*/
+            rolId = usuVO.getRolId();
+
             
             
 
@@ -87,20 +75,6 @@ public class UsuarioDAO extends ConexionBd implements Crud {
             puente.setString(8, correoUsuario);
             puente.setString(9, password);
  
-            /*
-            sql = "insert into usuario values (?,?,?,?,?,?,?,?,?,?,?)";
-            puente = conexion.prepareStatement(sql);
-            puente.setString(1, idUsuario);
-            puente.setString(2, nombre);
-            puente.setString(3, apellido);
-            puente.setString(4, fechaNacimiento);
-            puente.setString(5, tipoDocumento);
-            puente.setString(6, numDocumento);
-            puente.setString(7, direccion);
-            puente.setString(8, celular);
-            puente.setString(9, correoUsuario);
-            puente.setString(10, password);
-            puente.setString(11, rolId);*/
 
             puente.executeUpdate();
             operacion = true;
@@ -119,26 +93,28 @@ public class UsuarioDAO extends ConexionBd implements Crud {
     @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "update usuario set correoUsuario=?,password=? where idUsuario=?";
+            sql = "update usuario set nombre=?, apellido=?, fechaNacimiento=?, tipoDocumento=?, numDocumento=?, direccion=?, celular=?, estadoUsuario=?, correoUsuario=?, password=?, rolId=? where idUsuario=?;";
             puente = conexion.prepareStatement(sql);
-            puente.setString(1, idUsuario);
-            puente.setString(2, nombre);
-            puente.setString(3, apellido);
-            puente.setString(4, fechaNacimiento);
-            puente.setString(5, tipoDocumento);
-            puente.setString(6, numDocumento);
-            puente.setString(7, direccion);
-            puente.setString(8, celular);
-            puente.setString(9, estadoUsuario);
-            puente.setString(10, correoUsuario);
-            puente.setString(11, password);
-            puente.setString(12, rolId);
+            
+            puente.setString(1, nombre);
+            puente.setString(2, apellido);
+            puente.setString(3, fechaNacimiento);
+            puente.setString(4, tipoDocumento);
+            puente.setString(5, numDocumento);
+            puente.setString(6, direccion);
+            puente.setString(7, celular);
+            puente.setString(8, estadoUsuario);
+            puente.setString(9, correoUsuario);
+            puente.setString(10, password);
+            puente.setString(11, rolId);
+            puente.setString(12, idUsuario);
+            
             puente.executeUpdate();
             operacion = true;
 
         } catch (SQLException e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
-        } finally {
+        }  finally {
             try {
                 this.cerrarConexion();
             } catch (SQLException e) {
@@ -172,13 +148,40 @@ public class UsuarioDAO extends ConexionBd implements Crud {
         }
         return operacion;
     }
+    
+     public UsuarioVO consultarID(String idUsuario) {
+        UsuarioVO usuVO = null;
+        try {
+            conexion = this.obtenerConexion();
+            sql = "select * from usuario where idUsuario = ?";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, idUsuario);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                usuVO = new UsuarioVO(mensajero.getString(1), mensajero.getString(2),
+                        mensajero.getString(3), mensajero.getString(4), mensajero.getString(5),
+                        mensajero.getString(6), mensajero.getString(7), mensajero.getString(8),
+                        mensajero.getString(9),
+                        mensajero.getString(10),mensajero.getString(11),mensajero.getString(12));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return usuVO;
+    }
 
     public ArrayList<UsuarioVO> listar() {
         ArrayList<UsuarioVO> listaUsuarios = new ArrayList<>();
 
         try {
             conexion = this.obtenerConexion();
-            sql = "select * from usuario;";
+            sql = "SELECT usuario.idUsuario, usuario.nombre, usuario.apellido, usuario.fechaNacimiento, usuario.tipoDocumento, usuario.numDocumento, usuario.direccion, usuario.celular, usuario.estadoUsuario, usuario.correoUsuario, usuario.password, usuario.rolId FROM usuario ";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
@@ -208,13 +211,13 @@ public class UsuarioDAO extends ConexionBd implements Crud {
         }
         return listaUsuarios;
     }
-
+/*
     private void deneterConexion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public boolean eliminarRegistro() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
 
 }

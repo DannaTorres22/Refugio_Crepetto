@@ -11,11 +11,15 @@ package ModeloVO;
  */
 public class FormularioVO {
 
-    private String idFormulario, idUsuario, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, estadoFormulario, fechaRegistro;
+    private String idFormulario, idUsuario,idMascota, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, estadoFormulario, fechaRegistro;
 
-    public FormularioVO(String idFormulario, String idUsuario, String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, String p9, String p10, String estadoFormulario, String fechaRegistro) {
+    public FormularioVO() {
+    }
+
+    public FormularioVO(String idFormulario, String idUsuario,String idMascota, String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, String p9, String p10, String estadoFormulario, String fechaRegistro) {
         this.idFormulario = idFormulario;
         this.idUsuario = idUsuario;
+         this.idMascota = idMascota;
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -30,12 +34,21 @@ public class FormularioVO {
         this.fechaRegistro = fechaRegistro;
     }
 
+
     public String getIdFormulario() {
         return idFormulario;
     }
 
     public void setIdFormulario(String idFormulario) {
         this.idFormulario = idFormulario;
+    }
+
+    public String getIdMascota() {
+        return idMascota;
+    }
+
+    public void setIdMascota(String idMascota) {
+        this.idMascota = idMascota;
     }
 
     public String getIdUsuario() {
@@ -142,5 +155,6 @@ public class FormularioVO {
         this.fechaRegistro = fechaRegistro;
     }
 
- 
+  
+
 }

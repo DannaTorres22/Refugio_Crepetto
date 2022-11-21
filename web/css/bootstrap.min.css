@@ -330,9 +330,7 @@ fieldset {
     margin: 0;
     border: 0
 }
-.logo img{
-    width: 124%;
-}
+
 
 legend {
     display: block;
@@ -1173,6 +1171,9 @@ pre code {
 }
 
 @media (min-width:768px) {
+    .logo img{
+    width: 124%;
+}
     .col-md {
         -ms-flex-preferred-size: 0;
         flex-basis: 0;
@@ -1374,6 +1375,9 @@ pre code {
 }
 
 @media (min-width:992px) {
+    .logo img{
+    width: 124%;
+}
     .col-lg {
         -ms-flex-preferred-size: 0;
         flex-basis: 0;
@@ -2039,6 +2043,9 @@ pre code {
 }
 
 @media (max-width:1199.98px) {
+    .logo img{
+    width: 124%;
+}
     .table-responsive-xl {
         display: block;
         width: 100%;
@@ -6024,7 +6031,7 @@ button.close {
 
 .bs-popover-auto[x-placement^=right] .arrow,
 .bs-popover-right .arrow {
-    left: calc((.5rem + 1px) * -1);
+   
     width: .5rem;
     height: 1rem;
     margin: .3rem 0
@@ -7561,8 +7568,75 @@ button.bg-dark:hover {
     .float-sm-none {
         float: none!important
     }
+    .logo img{
+        width: 30%;
+    }
+}
+@media (min-width:479px)and(max-width 575px){
+    .logo img{
+        width: 30%;
+        
+    }
+    .slider_area .single_slider {
+    height: 464px;
+    width: 47rem;
+}
+.slider_area .single_slider .slider_text h3 {
+    font-size: 37px;
+    line-height: 56px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26rem;
+}
+.boxed-btn4 {
+   
+   
+   
+    padding: 17px 50px;
+   
+   
+    justify-content: center;
+
+    margin-top: -1rem;
+    margin-left: 5rem;
+        width: 16rem;
+}
 }
 
+@media (min-width:376px)and (max-width:478px) {
+.logo img{
+        width: 30%;
+        
+    }
+    .slider_area .single_slider {
+    height: 464px;
+    width: 47rem;
+}
+.slider_area .single_slider .slider_text h3 {
+    font-size: 37px;
+    line-height: 56px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26rem;
+}
+.boxed-btn4 {
+   
+   
+   
+    padding: 17px 50px;
+   
+   
+    justify-content: center;
+
+    margin-top: -1rem;
+    margin-left: 5rem;
+        width: 16rem;
+}
+}
 @media (min-width:768px) {
     .float-md-left {
         float: left!important
@@ -8773,6 +8847,9 @@ button.bg-dark:hover {
 }
 
 @media (min-width:1200px) {
+    .logo img{
+    width: 124%;
+}
     .m-xl-0 {
         margin: 0!important
     }
@@ -9073,6 +9150,9 @@ button.bg-dark:hover {
 }
 
 @media (min-width:992px) {
+    .logo img{
+    width: 124%;
+}
     .text-lg-left {
         text-align: left!important
     }

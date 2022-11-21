@@ -30,17 +30,19 @@ public class FormularioDAO extends ConexionBd implements Crud {
     private boolean operacion = false;
     private String sql;
 
-    String idFormulario = "", idUsuario = "", p1 = "", p2 = "", p3 = "", p4 = "", p5 = "", p6 = "", p7 = "", p8 = "", p9 = "", p10 = "", estadoFormulario = "", fechaRegistro = "";
+    String idFormulario = "", idUsuario = "", idMascota = "", p1 = "", p2 = "", p3 = "", p4 = "", p5 = "", p6 = "", p7 = "", p8 = "", p9 = "", p10 = "", estadoFormulario = "", fechaRegistro = "";
 
     public FormularioDAO() {
     }
 
     public FormularioDAO(FormularioVO formVO) {
         super();
+
         try {
             conexion = this.obtenerConexion();
             idFormulario = formVO.getIdFormulario();
             idUsuario = formVO.getIdUsuario();
+            idMascota = formVO.getIdMascota();
             p1 = formVO.getP1();
             p2 = formVO.getP2();
             p3 = formVO.getP3();
@@ -62,18 +64,20 @@ public class FormularioDAO extends ConexionBd implements Crud {
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "INSERT INTO formulario(idUsuario,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,estadoFormulario,fechaRegistro) VALUES (5,?,?,?,?,?,?,?,?,?,?,'Pendiente', NOW());";
+            sql = "INSERT INTO formulario(idUsuario,idMascota,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,estadoFormulario,fechaRegistro) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,'Pendiente', NOW());";
             puente = conexion.prepareStatement(sql);
-            puente.setString(1, p1);
-            puente.setString(2, p2);
-            puente.setString(3, p3);
-            puente.setString(4, p4);
-            puente.setString(5, p5);
-            puente.setString(6, p6);
-            puente.setString(7, p7);
-            puente.setString(8, p8);
-            puente.setString(9, p9);
-            puente.setString(10, p10);
+            puente.setString(1, idUsuario);
+            puente.setString(2, idMascota);
+            puente.setString(3, p1);
+            puente.setString(4, p2);
+            puente.setString(5, p3);
+            puente.setString(6, p4);
+            puente.setString(7, p5);
+            puente.setString(8, p6);
+            puente.setString(9, p7);
+            puente.setString(10, p8);
+            puente.setString(11, p9);
+            puente.setString(12, p10);
             puente.executeUpdate();
             operacion = true;
         } catch (SQLException e) {
@@ -91,9 +95,23 @@ public class FormularioDAO extends ConexionBd implements Crud {
     @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "UPDATE formulario SET estadoFormulario='Pendiente' WHERE estadoFormulario=?;";
+            sql = "update formulario set idUsuario=?,idMascota=?, p1=?, p2=?, p3=?, p4=?, p5=?, p6=?, p7=?, p8=?, p9=?, p10=?,estadoFormulario=?,fechaRegistro=? where idFormulario=?;";
             puente = conexion.prepareStatement(sql);
-            puente.setString(1, estadoFormulario);
+            puente.setString(1, idUsuario);
+            puente.setString(2, idMascota);
+            puente.setString(3, p1);
+            puente.setString(4, p2);
+            puente.setString(5, p3);
+            puente.setString(6, p4);
+            puente.setString(7, p5);
+            puente.setString(8, p6);
+            puente.setString(9, p7);
+            puente.setString(10, p8);
+            puente.setString(11, p9);
+            puente.setString(12, p10);
+            puente.setString(13, estadoFormulario);
+            puente.setString(14, fechaRegistro);
+            puente.setString(15, idFormulario);
             puente.executeUpdate();
             operacion = true;
         } catch (SQLException e) {
@@ -112,17 +130,14 @@ public class FormularioDAO extends ConexionBd implements Crud {
         ArrayList<FormularioVO> listaFormulario = new ArrayList<>();
 
         try {
+            //SELECT formulario.idFormulario,mascota.nombre,usuario.correoUsuario,formulario.p1, formulario.p2, formulario.p3, formulario.p4, formulario.p5, formulario.p6, formulario.p7, formulario.p8,formulario.p9,formulario.p10,formulario.estadoFormulario,formulario.fechaRegistro FROM formulario INNER JOIN mascota ON formulario.idMascota = mascota.idMascota INNER JOIN usuario ON formulario.idUsuario = usuario.idUsuario
             conexion = this.obtenerConexion();
-            sql = "SELECT usuario.correoUsuario,usuario.nombre,usuario.apellido, formulario.p1, formulario.p2, formulario.p3,formulario.p4,formulario.p5,formulario.p6,formulario.p7,formulario.p8,formulario.p9,formulario.p10,formulario.estadoFormulario, formulario.fechaRegistro FROM formulario INNER JOIN usuario ON formulario.idUsuario = usuario.idUsuario";
+            sql = "SELECT formulario.idFormulario,usuario.correoUsuario,mascota.nombre,formulario.p1, formulario.p2, formulario.p3, formulario.p4, formulario.p5, formulario.p6, formulario.p7, formulario.p8,formulario.p9,formulario.p10,formulario.estadoFormulario,formulario.fechaRegistro FROM formulario INNER JOIN mascota ON formulario.idMascota = mascota.idMascota INNER JOIN usuario ON formulario.idUsuario = usuario.idUsuario";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
-                FormularioVO formVO = new FormularioVO(
-                        mensajero.getString(1),
-                        mensajero.getString(2),
-                        mensajero.getString(3),
-                        mensajero.getString(4),
-                        mensajero.getString(5),
+                FormularioVO formVO = new FormularioVO(mensajero.getString(1), mensajero.getString(2),
+                        mensajero.getString(3), mensajero.getString(4), mensajero.getString(5), mensajero.getString(6),
                         mensajero.getString(7),
                         mensajero.getString(8),
                         mensajero.getString(9),
@@ -131,7 +146,8 @@ public class FormularioDAO extends ConexionBd implements Crud {
                         mensajero.getString(12),
                         mensajero.getString(13),
                         mensajero.getString(14),
-                        mensajero.getString(15));
+                        mensajero.getString(15)
+                );
 
                 listaFormulario.add(formVO);
             }
@@ -151,13 +167,53 @@ public class FormularioDAO extends ConexionBd implements Crud {
         FormularioVO formVO = null;
         try {
             conexion = this.obtenerConexion();
-            sql = "select * from Formulario where idFormulario = ?";
+            sql = "select * from formulario where idFormulario = ?";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, idFormulario);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
                 formVO = new FormularioVO(mensajero.getString(1), mensajero.getString(2),
-                        mensajero.getString(3), mensajero.getString(4), mensajero.getString(5), mensajero.getString(7),
+                        mensajero.getString(3), mensajero.getString(4), mensajero.getString(5), mensajero.getString(6),
+                        mensajero.getString(7),
+                        mensajero.getString(8),
+                        mensajero.getString(9),
+                        mensajero.getString(10),
+                        mensajero.getString(11),
+                        mensajero.getString(12),
+                        mensajero.getString(13),
+                        mensajero.getString(14),
+                        mensajero.getString(15)
+                );
+            }
+        } catch (Exception e) {
+            Logger.getLogger(FormularioDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(FormularioDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return formVO;
+    }
+
+    public FormularioVO traerEstado(String idUsuario) {
+        FormularioVO formVO = null;
+        try {
+            conexion = this.obtenerConexion();
+            sql = "SELECT formulario.estadoFormulario FROM formulario WHERE idUsuario=?";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, idUsuario);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                formVO = new FormularioVO(
+                        mensajero.getString(1),
+                        mensajero.getString(2),
+                        mensajero.getString(3),
+                        mensajero.getString(4),
+                        mensajero.getString(5),
+                        mensajero.getString(6),
+                        mensajero.getString(7),
                         mensajero.getString(8),
                         mensajero.getString(9),
                         mensajero.getString(10),
@@ -178,6 +234,38 @@ public class FormularioDAO extends ConexionBd implements Crud {
         }
         return formVO;
     }
+
+    /*
+    public FormularioVO traerMascota(String idMascota){
+        FormularioVO formVO = null;
+        try {
+            conexion = this.obtenerConexion();
+            sql = "select * from Formulario where idMascota = ?";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, idMascota);
+             mensajero = puente.executeQuery();
+              while (mensajero.next()) {
+                formVO = new FormularioVO(mensajero.getString(1), mensajero.getString(2),
+                        mensajero.getString(3), mensajero.getString(4), mensajero.getString(5), mensajero.getString(7),
+                        mensajero.getString(8),
+                        mensajero.getString(9),
+                        mensajero.getString(10),
+                        mensajero.getString(11),
+                        mensajero.getString(12),
+                        mensajero.getString(13),
+                        mensajero.getString(14),
+                        mensajero.getString(15),
+                        mensajero.getString(16));
+            }
+        } catch (SQLException e) {
+             Logger.getLogger(FormularioDAO.class.getName()).log(Level.SEVERE, null, e);
+        }finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(FormularioDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return formVO;
+    }*/
 }
-
-

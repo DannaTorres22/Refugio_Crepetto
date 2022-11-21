@@ -18,6 +18,7 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/stylelogin.css" rel="stylesheet" type="text/css"/>
+          <%@include file="logoPestaña.jsp"%>
 
     </head>
     <body>
@@ -50,6 +51,7 @@
                                         <p class="social-media d-flex justify-content-end">
                                             <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
                                             <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                                            <a href="index.jsp" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-home"></span></a>
                                         </p>
                                     </div>
                                 </div><br>

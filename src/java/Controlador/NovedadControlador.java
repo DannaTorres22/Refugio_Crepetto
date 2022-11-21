@@ -68,7 +68,7 @@ public class NovedadControlador extends HttpServlet {
                 request.getRequestDispatcher("consultarNovedad.jsp").forward(request, response);
                 break;
 
-            case 3:
+            case 3://Consultar Novedad
                 novVO = novDAO.consultarID(idNovedad);
                 if (novVO != null) {
                     request.setAttribute("datosConsultados", novVO);

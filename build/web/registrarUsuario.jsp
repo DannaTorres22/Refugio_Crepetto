@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <%@include file="logoPestaña.jsp"%>
 <!-- CSS only -->
 <!doctype html>
 <html lang="en">
@@ -18,6 +19,7 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/registrarUsuario.css" rel="stylesheet" type="text/css"/>
+        
 
     </head>
 

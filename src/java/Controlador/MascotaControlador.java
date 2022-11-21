@@ -6,6 +6,8 @@
 package Controlador;
 
 import ModeloDAO.MascotaDAO;
+import ModeloDAO.MascotaDAO;
+import ModeloVO.MascotaVO;
 import ModeloVO.MascotaVO;
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import java.io.File;
@@ -76,66 +78,75 @@ public class MascotaControlador extends HttpServlet {
         String tipo = request.getParameter("textTipoM");
         String estadoMascota = request.getParameter("textEstadoM");
 
+        //2.instanciar VO // infromacion
+        MascotaVO masVO = new MascotaVO(idMascota, idUsuario, fechaIngreso, tipo, nombre, edad, raza, tipo, estadoMascota);
+
+        //3. instanciar Dao //opereaciones
+        MascotaDAO masDAO = new MascotaDAO(masVO);
+
         // mascotas = masDAO.listar();
         switch (opcion) {
             case 1:  //agregar registro
-                if (masDAO.agregarRegistro()) {
-                    // creating path components for saving the file  
-                    response.setContentType("text/html;charset=UTF-8");
-                    // creating path components for saving the file  
-                    //final String path = request.getParameter("destination");  
-                    final Part filePart = request.getPart("file");
-                    final String fileName = getFileName(filePart);
 
-                    // declare instances of OutputStream, InputStream, and PrintWriter classes  
-                    OutputStream otpStream = null;
+                // creating path components for saving the file  
+                response.setContentType("text/html;charset=UTF-8");
+                // creating path components for saving the file  
+                //final String path = request.getParameter("destination");  
+                final Part filePart = request.getPart("file");
+                final String fileName = getFileName(filePart);
 
-                    InputStream iptStream = null;
-                    final PrintWriter writer = response.getWriter();
+                // declare instances of OutputStream, InputStream, and PrintWriter classes  
+                OutputStream otpStream = null;
 
-                    // try section handles the code for storing file into the specified location  
-                    try {
-                        // initialize instances of OutputStream and InputStream classes  
-                        otpStream = new FileOutputStream(new File("C:\\upload" + File.separator + fileName));
-                        String url = "http://localhost:8080/" + fileName;
-                        iptStream = filePart.getInputStream();
+                InputStream iptStream = null;
+                final PrintWriter writer = response.getWriter();
 
-                        int read = 0;
+                // try section handles the code for storing file into the specified location  
+                try {
+                    // initialize instances of OutputStream and InputStream classes  
+                    otpStream = new FileOutputStream(new File("C:\\Users\\julia_000\\Downloads\\latest-glassfish\\glassfish4\\glassfish\\domains\\domain1\\docroot" + File.separator + fileName));
+                    String url = "http://localhost:8080/" + fileName;
+                    masVO.setUrl(url);
+                    iptStream = filePart.getInputStream();
 
-                        // initialize bytes array for storing file data  
-                        final byte[] bytes = new byte[1024];
+                    int read = 0;
 
-                        // use while loop to read data from the file using iptStream and write into  the desination folder using writer and otpStream  
-                        while ((read = iptStream.read(bytes)) != -1) {
-                            otpStream.write(bytes, 0, read);
-                        }
+                    // initialize bytes array for storing file data  
+                    final byte[] bytes = new byte[1024];
 
-                        System.out.println("ARCHIVO CREADO");
-                        //LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", new Object[]{fileName, "C:\\upload\\"}); 
-                        request.setAttribute("MensajeExito", "La mascota se registro");
-                    } // catch section handles the errors   
-                    catch (FileNotFoundException fne) {
-                        System.out.println(fne);
-                        System.out.println("error de cargar archivo");
-                        LOGGER.log(Level.SEVERE, "Problems during file upload. Error: {0}", new Object[]{fne.getMessage()});
-                        request.setAttribute("MensajeExito", "La mascota se registro");
-                    } // finally section will close all the open classes  
-                    finally {
-                        if (otpStream != null) {
-                            otpStream.close();
-                        }
-                        if (iptStream != null) {
-                            iptStream.close();
-                        }
-                        if (writer != null) {
-                            writer.close();
-                        }
+                    // use while loop to read data from the file using iptStream and write into  the desination folder using writer and otpStream  
+                    while ((read = iptStream.read(bytes)) != -1) {
+                        otpStream.write(bytes, 0, read);
                     }
 
+                    System.out.println("ARCHIVO CREADO");
+                    //LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", new Object[]{fileName, "C:\\upload\\"}); 
+                    request.setAttribute("MensajeExito", "La mascota se registro");
+                } // catch section handles the errors   
+                catch (FileNotFoundException fne) {
+                    System.out.println(fne);
+                    System.out.println("error de cargar archivo");
+                    LOGGER.log(Level.SEVERE, "Problems during file upload. Error: {0}", new Object[]{fne.getMessage()});
+                    request.setAttribute("MensajeExito", "La mascota se registro");
+                } // finally section will close all the open classes  
+                finally {
+                    if (otpStream != null) {
+                        otpStream.close();
+                    }
+                    if (iptStream != null) {
+                        iptStream.close();
+                    }
+                    if (writer != null) {
+                        writer.close();
+                    }
+                }
+
+                if (masDAO.agregarRegistro(masVO)) {
+                    request.setAttribute("MensajeExito", "La mascota se registro");
                 } else {
                     request.setAttribute("MensajeError", "La mascota no se pudo registrar");
                 }
-                request.getRequestDispatcher("registrarMascota.jsp").forward(request, response);
+                //request.getRequestDispatcher("registrarMascota.jsp").forward(request, response);
                 break;
 
             case 2:  //actualizar registro
@@ -167,12 +178,21 @@ public class MascotaControlador extends HttpServlet {
                 }
                 request.getRequestDispatcher("consultarMascota.jsp").forward(request, response);
                 break;
-            case 6:
+            /*case 6:
+                MascotaVO masVO = new MascotaVO();
+                MascotaDAO masDAO = new MascotaDAO();
+                masVO=masDAO.traerMascota(idMascota);
+                if (masVO!= null) {
+                    request.setAttribute("MascotaTraida", masVO);
+                    request.getRequestDispatcher("registrarRespuestas.jsp").forward(request, response);
+                }
+                else {
+                    request.setAttribute("MensajeError", "La mascota no se llevo ");
 
-                break;
-            default:
-                request.setAttribute("mascotas", mascotas);
-                request.getRequestDispatcher("registrarMascota.jsp").forward(request, response);
+                  
+                }
+                break;*/
+
         }
         /*  
         //1. datos de la vista

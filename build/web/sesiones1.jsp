@@ -6,6 +6,7 @@
 
 <%@page import="ModeloVO.UsuarioVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="logoPestaña.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -70,7 +71,7 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="index.html">Inicio</a></li>
+                                        <li><a href="dashboardA.jsp">Inicio</a></li>
                                         <li><a href="perfiles.jsp">Mascotas</a></li>
                                         <li><a href="#modulos">Solicitud</a></li>
 

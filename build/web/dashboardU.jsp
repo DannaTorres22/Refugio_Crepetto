@@ -7,7 +7,9 @@ Author     : Gabriela Moron
 <%@page import="ModeloVO.UsuarioVO"%>
 <%@page import="ModeloDAO.UsuarioDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+  <%@include file="logoPestaña.jsp"%>
 <%@include file="sesiones.jsp"%>
+
 <!DOCTYPE html>
 <html>
     <head>

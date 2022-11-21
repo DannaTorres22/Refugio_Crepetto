@@ -7,8 +7,10 @@
 <%@page import="ModeloDAO.MascotaDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ModeloVO.MascotaVO"%>
+ <%@include file="logoPestaña.jsp"%>
 <%@include file="sesiones.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>

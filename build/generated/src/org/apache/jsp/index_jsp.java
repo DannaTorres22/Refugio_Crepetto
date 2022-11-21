@@ -85,7 +85,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <div class=\"col-xl-3 col-lg-3\">\n");
       out.write("                            <div class=\"logo\">\n");
       out.write("                                <a href=\"index.html\">\n");
-      out.write("                                    <img src=\"img/logo.png\" alt=\"\">\n");
+      out.write("                                    <img src=\"logo.png\" alt=\"\">\n");
       out.write("                                </a>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
@@ -97,11 +97,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                        <li><a href=\"#nosotros\">Nosotros</a></li>\n");
       out.write("                                        <li><a href=\"#modulos\">Funcionalidades</a></li>\n");
       out.write("                                        <li><a href=\"#ventajas\">Ventajas</a></li>\n");
-      out.write("                                        <li><a href=\"contact.html\">Contacto</a></li>\n");
-      out.write("                                        <li><a href=\"../login-form-17/index.html\">Iniciar sesión</a></li>\n");
+      out.write("                                        <li><a href=\"contacto.jsp\">Contacto</a></li>\n");
+      out.write("                                        <li><a href=\"login.jsp\">Iniciar sesión</a></li>\n");
       out.write("                                    </ul>\n");
       out.write("\n");
-      out.write("                                    <a href=\"\"><img src=\"/anipat/img/i logo.png\" alt=\"\"></a>\n");
+      out.write("                                  \n");
       out.write("                                </nav>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
@@ -124,7 +124,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <h3>El software que tu<span> fundación necesita</span></h3>\n");
       out.write("                            <p>Con Crepetto podras tener <br>el espacio y la protección que necesitas</p>\n");
       out.write("                            <br>\n");
-      out.write("                            <a href=\"contact.html\" class=\"boxed-btn4\">Quiero el software</a>\n");
+      out.write("                            <a href=\"contacto.jsp\" class=\"boxed-btn4\">Quiero el software</a>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
       out.write("                </div>\n");
@@ -243,7 +243,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                tecnología desde tu área y lo que te gusta. ¡Asi que cuentas con nosotros para\n");
       out.write("                                crecer juntos!\n");
       out.write("                            </p>\n");
-      out.write("                            <a href=\"index.html\" class=\"boxed-btn3\">Ver más</a>\n");
+      out.write("                            <a href=\"contacto.jsp\" class=\"boxed-btn3\">Ver más</a>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
       out.write("                </div>\n");

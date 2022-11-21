@@ -6,11 +6,12 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Crepetto</title>
+    <%@include file="logoPestaña.jsp"%>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo-img.png">
+ 
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -291,7 +292,7 @@
                                 posible.</p>
                         </div>
                         <div class="contact_btn d-flex align-items-center justify-content-center">
-                            <a href="contact.html" class="boxed-btn4">Contactanos</a>
+                            <a href="contacto.jsp" class="boxed-btn4">Contactanos</a>
                             <p>Ó <a href="#"> +57 3044985329</a></p>
                         </div>
                     </div>

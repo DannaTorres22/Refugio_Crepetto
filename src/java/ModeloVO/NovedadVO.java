@@ -18,12 +18,7 @@ public class NovedadVO {
         this.fechaNovedad = fechaNovedad;
     }
 
-    public NovedadVO(String idMascota, String tipoNovedad, String observacionNovedad, String fechaNovedad) {
-        this.idMascota = idMascota;
-        this.tipoNovedad = tipoNovedad;
-        this.observacionNovedad = observacionNovedad;
-        this.fechaNovedad = fechaNovedad;
-    }
+   
 
    
 

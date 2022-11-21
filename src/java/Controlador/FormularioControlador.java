@@ -6,7 +6,9 @@
 package Controlador;
 
 import ModeloDAO.FormularioDAO;
+import ModeloDAO.MascotaDAO;
 import ModeloVO.FormularioVO;
+import ModeloVO.MascotaVO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,13 +31,15 @@ public class FormularioControlador extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+ 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         //1. datos de la vista
-       String idFormulario = request.getParameter("textIdFormulario");
+        String idFormulario = request.getParameter("textIdFormulario");
         String idUsuario = request.getParameter("textIdUsuario");
+        String idMascota = request.getParameter("textIdMascota");
         String p1 = request.getParameter("textP1");
         String p2 = request.getParameter("textP2");
         String p3 = request.getParameter("textP3");
@@ -50,9 +54,12 @@ public class FormularioControlador extends HttpServlet {
         String fechaRegistro = request.getParameter("textFechaRegistro");
 
         int opcion = Integer.parseInt(request.getParameter("opcion"));
+        
+        MascotaVO masVO = new MascotaVO();
+        MascotaDAO masDAO = new MascotaDAO();
 
         //2.instanciar VO // infromacion
-        FormularioVO formVO = new FormularioVO(idFormulario, idUsuario, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, estadoFormulario, fechaRegistro);
+        FormularioVO formVO = new FormularioVO(idFormulario, idUsuario, idMascota, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, estadoFormulario, fechaRegistro);
 
         //3. instanciar Dao //opereaciones
         FormularioDAO formDAO = new FormularioDAO(formVO);
@@ -62,6 +69,7 @@ public class FormularioControlador extends HttpServlet {
             case 1:  //agregar registro
                 if (formDAO.agregarRegistro()) {
                     request.setAttribute("MensajeExito", "La Formulario se registro");
+                     request.getRequestDispatcher("perfiles.jsp").forward(request, response);
                 } else {
                     request.setAttribute("MensajeError", "La Formulario no se pudo registrar");
                 }
@@ -74,18 +82,29 @@ public class FormularioControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "La Formulario no se pudo actualizar");
                 }
-                request.getRequestDispatcher("consultarFormulario.jsp").forward(request, response);
+                request.getRequestDispatcher("consultarRespuestas.jsp").forward(request, response);
                 break;
 
             case 3:
                 formVO = formDAO.consultarID(idFormulario);
                 if (formVO != null) {
                     request.setAttribute("datosConsultados", formVO);
-                    request.getRequestDispatcher("actualizarFormulario.jsp").forward(request, response);
+                    request.getRequestDispatcher("actualizarRespuestas.jsp").forward(request, response);
                 } else {
                     request.setAttribute("MensajeError", "No hay resultados que coincidan con tu busqueda");
 
-                    request.getRequestDispatcher("consultarFormulario.jsp").forward(request, response);
+                    request.getRequestDispatcher("consultarRespuestas.jsp").forward(request, response);
+                }
+                break;
+                
+            case 4:
+                masVO = masDAO.traerMascota(idMascota);
+                if (masVO != null) {
+                    request.setAttribute("datosConsultados", masVO);
+                    request.getRequestDispatcher("registrarRespuestas.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("MensajeError", "No hay resultados que coincidan con tu busqueda");
+                    request.getRequestDispatcher("perfiles.jsp").forward(request, response);
                 }
                 break;
         }

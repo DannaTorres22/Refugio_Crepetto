@@ -75,7 +75,7 @@ public final class registrarMascota_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("      \n");
       out.write("        <!-- <link rel=\"stylesheet\" href=\"css/responsive.css\"> -->\n");
       out.write("        <link href=\"css/style.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
-      out.write("        <title>Sesiones</title>\n");
+      out.write("        <title>sesion admi</title>\n");
       out.write("    </head>\n");
       out.write("    ");
 
@@ -104,7 +104,7 @@ public final class registrarMascota_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                <i class=\"fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none\" aria-hidden=\"true\" id=\"iconSidenav\"></i>\n");
       out.write("                <a class=\"navbar-brand m-0\" href=\"#\" target=\"_blank\">\n");
       out.write("                    <img src=\"logo.png\" class=\"navbar-brand-img h-100\" alt=\"main_logo\">\n");
-      out.write("                      <li class=\"usuario\">Usuario ");
+      out.write("                      <li class=\"usuario\">");
       out.print(correoUsuario);
       out.write("</li>\n");
       out.write("                                          \n");

@@ -7,7 +7,7 @@ package ModeloVO;
 
 /**
  *
- * @author julia_000
+ * @author Danna Torres
  */
 public class UsuarioVO {
   private String idUsuario, nombre, apellido, fechaNacimiento, tipoDocumento, numDocumento, direccion, celular, estadoUsuario, correoUsuario, password, rolId;
@@ -26,7 +26,7 @@ public class UsuarioVO {
         this.password = password;
         this.rolId = rolId;
     }
-
+/*
     public UsuarioVO(String nombre, String apellido, String fechaNacimiento, String tipoDocumento, String numDocumento, String direccion, String celular, String estadoUsuario, String correoUsuario, String password, String rolId) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -40,10 +40,14 @@ public class UsuarioVO {
         this.password = password;
         this.rolId = rolId;
     }
-    
-
+   
+*/
     public UsuarioVO() {
     }
+
+    /*public UsuarioVO(String string, String string0, String string1, String string2, String string3, String string4, String string5, String string6, String string7, String string8) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
 
     public String getIdUsuario() {
         return idUsuario;
@@ -141,6 +145,6 @@ public class UsuarioVO {
         this.rolId = rolId;
     }
 
-    
+   
    
 }

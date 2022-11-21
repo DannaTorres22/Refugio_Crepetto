@@ -16,20 +16,18 @@ public class MascotaVO {
     private String idMascota;
     private String idUsuario;
     private String fechaIngreso;
-    private InputStream foto;
     private String url;
     private String nombre;
     private String edad;
     private String raza;
     private String tipo;
     private String estadoMascota;
-    private String urlFoto;
+   
 
-    public MascotaVO(String idMascota, String idUsuario, String fechaIngreso, InputStream foto, String url,String nombre, String edad, String raza, String tipo, String estadoMascota) {
+    public MascotaVO(String idMascota, String idUsuario, String fechaIngreso, String url,String nombre, String edad, String raza, String tipo, String estadoMascota) {
         this.idMascota = idMascota;
         this.idUsuario = idUsuario;
         this.fechaIngreso = fechaIngreso;
-        this.foto = foto;
          this.url = url;
         this.nombre = nombre;
         this.edad = edad;
@@ -38,17 +36,6 @@ public class MascotaVO {
         this.estadoMascota = estadoMascota;
     }
 
-    public MascotaVO(String idUsuario, String fechaIngreso, InputStream foto,String url ,String nombre, String edad, String raza, String tipo, String estadoMascota) {
-        this.idUsuario = idUsuario;
-        this.fechaIngreso = fechaIngreso;
-        this.foto = foto;
-         this.url = url;
-        this.nombre = nombre;
-        this.edad = edad;
-        this.raza = raza;
-        this.tipo = tipo;
-        this.estadoMascota = estadoMascota;
-    }
 
     public MascotaVO() {
     }
@@ -77,14 +64,6 @@ public class MascotaVO {
         this.fechaIngreso = fechaIngreso;
     }
 
-    public InputStream getFoto() {
-        return foto;
-    }
-
-    public void setFoto(InputStream foto) {
-        this.foto = foto;
-    }
-    
     public String getUrl() {
         return url;
     }
@@ -133,14 +112,7 @@ public class MascotaVO {
         this.estadoMascota = estadoMascota;
     }
 
-    public String getUrlFoto() {
-        return urlFoto;
-    }
-
-    public void setUrlFoto(String urlFoto) {
-        this.urlFoto = urlFoto;
-    }
-    
+  
     
     
     

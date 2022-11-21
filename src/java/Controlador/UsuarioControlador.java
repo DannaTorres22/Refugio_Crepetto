@@ -5,20 +5,15 @@
  */
 package Controlador;
 
-import ModeloDAO.RolDAO;
 import ModeloDAO.UsuarioDAO;
-import ModeloVO.RolVO;
 import ModeloVO.UsuarioVO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -72,13 +67,13 @@ public class UsuarioControlador extends HttpServlet {
                 }
                 request.getRequestDispatcher("registrarUsuario.jsp").forward(request, response);
                 break;
-            case 2: //actualizar Registro
+            case 2:  //actualizar registro
                 if (usuDAO.actualizarRegistro()) {
-                    request.setAttribute("mensajeExito", "el usuario se actualizo correctamente");
+                    request.setAttribute("MensajeExito", "El usuario se actualizo correctamente");
                 } else {
-                    request.setAttribute("mensajeError", "el usuario NO se actualizo correctamente");
+                    request.setAttribute("MensajeError", "El usuario no se pudo actualizar");
                 }
-                request.getRequestDispatcher("actualizarUsuario.jsp").forward(request, response);
+                request.getRequestDispatcher("consultarUsuario.jsp").forward(request, response);
                 break;
             case 3: //Iniciar sesion
             {
@@ -93,10 +88,10 @@ public class UsuarioControlador extends HttpServlet {
                     //condicion 
                     if (rolId_is.equals("1")) // Rol Administrador
                     {
-                        request.getRequestDispatcher("registrarRespuestas.jsp").forward(request, response);
+                        request.getRequestDispatcher("dashboardU.jsp").forward(request, response);
                     } else if (rolId_is.equals("2")) // Rol Adoptante
                     {
-                        request.getRequestDispatcher("registrarRespuestas.jsp").forward(request, response);
+                        request.getRequestDispatcher("dashboardA.jsp").forward(request, response);
                     }
                 } //los datos ingresados no son validos
                 else {
@@ -105,6 +100,18 @@ public class UsuarioControlador extends HttpServlet {
                 }
             }
             break;
+            
+            case 4://Consultar Usuario
+                usuVO = usuDAO.consultarID(idUsuario);
+                if (usuVO != null) {
+                    request.setAttribute("datosConsultados", usuVO);
+                    request.getRequestDispatcher("actualizarUsuario.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("MensajeError", "No hay resultados que coincidan con tu busqueda");
+
+                    request.getRequestDispatcher("consultarUsuario.jsp").forward(request, response);
+                }
+                break;
         }
     }
 

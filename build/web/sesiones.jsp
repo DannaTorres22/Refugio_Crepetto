@@ -59,7 +59,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                       
-                        <a class="nav-link active" href="./pages/dashboard.html">
+                        <a class="nav-link active" href="dashboardU.jsp">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="fa fa-indent text-info text-sm opacity-10"></i>
                             </div>
@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="./pages/tables.html">
+                        <a class="nav-link " href="consultarMascota.jsp">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="fa fa-paw text-info text-sm opacity-10"></i>
                             </div>
@@ -75,7 +75,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="./pages/billing.html">
+                        <a class="nav-link " href="consultarNovedad.jsp">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="fa fa-plus-square text-info text-sm opacity-10"></i>
                             </div>
@@ -83,7 +83,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="./pages/virtual-reality.html">
+                        <a class="nav-link " href="consultarUsuario.jsp">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="fa fa-user text-info text-sm opacity-10"></i>
                             </div>
@@ -91,19 +91,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="./pages/rtl.html">
+                        <a class="nav-link " href="consultarRespuestas.jsp">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="fa fa-bell text-info text-sm opacity-10"></i>
                             </div>
                             <span class="nav-link-text ms-1">Solicitudes</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="registrarPregunta.jsp">
-                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="fa fa-pencil text-info text-sm opacity-10"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Formulario</span>
                         </a>
                     </li>
 
