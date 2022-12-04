@@ -60,11 +60,11 @@
                                 <form action="#" class="signin-form">
                                     <div class="form-group mb-3">
                                         <label class="label" for="name">Correo electronico</label>
-                                        <input type="email" class="form-control" placeholder="Username" name="textCorreoUsuario" required> 
+                                        <input type="email" class="form-control" placeholder="Ingresa tu correo" name="textCorreoUsuario" required> 
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="label" for="password">Contraseña</label>
-                                        <input type="password" class="form-control" placeholder="Password" name="textPassword" required>
+                                        <input type="password" class="form-control" placeholder="Ingresa tu contraseña" name="textPassword" required>
                                     </div>
 
                                     <button type="submit" class="form-control btn btn-primary submit px-3">Ingresar</button>

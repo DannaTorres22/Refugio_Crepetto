@@ -61,7 +61,7 @@
                 <input type="hidden" class="form-controll" id="descripcion"  name="textP9" value="<%=formVO.getP9()%>">
                 <input type="hidden" class="form-controll" id="descripcion"  name="textP10" value="<%=formVO.getP10()%>">
                 <div class="form-group col-md-15 textoEstado">
-                    <label class="labelE" for="inputEmail4">Tu solicitud esta<b> <%=formVO.getEstadoFormulario()%></b><br> Nota mportante: Con este número <b><%=formVO.getIdFormulario()%></b> podras consultar el estado de tu solicitud, ¡Suerte!</label><br>
+                    <label class="labelE" for="inputEmail4">Tu solicitud esta<b> <%=formVO.getEstadoFormulario()%></b><br> Nota Importante: Con este número <b><%=formVO.getIdFormulario()%></b> podras consultar el estado de tu solicitud, ¡Suerte!</label><br>
                 </div>
                 <input type="hidden" class="form-controll" id="descripcion"  name="textFechaRegistro" value="<%=formVO.getFechaRegistro()%>">
 

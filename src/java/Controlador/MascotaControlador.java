@@ -156,8 +156,10 @@ public class MascotaControlador extends HttpServlet {
             case 2:  //actualizar registro
                 if (masDAO.actualizarRegistro()) {
                     request.setAttribute("MensajeExito", "La mascota se actualizo");
+                    request.getRequestDispatcher("consultarMascota.jsp").forward(request, response);
                 } else {
                     request.setAttribute("MensajeError", "La mascota no se pudo actualizar");
+                    request.getRequestDispatcher("consultarMascota.jsp").forward(request, response);
                 }
                 request.getRequestDispatcher("consultarMascota.jsp").forward(request, response);
                 break;
