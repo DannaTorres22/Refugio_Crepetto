@@ -121,6 +121,7 @@ p {
   font-family: "Open Sans", sans-serif;
 }
 
+
 /* line 66, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_reset.scss */
 label {
   color: #7e7e7e;
@@ -588,6 +589,189 @@ h3 {
   padding-bottom: 30px;
   margin-top: 10px;
 }
+.input2{
+    width: 100%;
+    padding: 1%;
+    border: none;
+    border-bottom: var(--gris) solid .2em;  
+    margin-bottom: 0.5rem;
+}
+
+
+
+.termino2{
+    width: 6%;
+   
+}
+
+input:checked{
+    background-color: #6698c4;
+}
+
+input#terminosA.termino2{
+    display: inline;
+}
+
+.boton2 a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+}
+
+.terminos2{
+        margin-left: -1.5rem
+}
+
+.terminos{
+  display: none;
+}
+
+
+.modal {
+    background-color: rgba(0,0,0,0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    padding-top: 54px;
+    display: none;
+}
+.contenidoModal{
+    background-color: #FFFFFF;
+   width: 80%;
+    margin: auto;
+    position: relative;
+    animation-name: animarmodal;
+    animation-duration: 0.5s;
+    padding-bottom: 1rem;
+    
+}
+
+.contenidoModal h2{
+    background: rgb(47,100,148);
+    background-image: -webkit-linear-gradient(0deg, #46B2C2 0%, #0E5FA1 99%);
+    text-align: center;
+    color: #FFFFFF;
+    padding: 0.7rem;
+}
+
+.contenidoModal button{
+    width: 32%;
+    display: flex;
+    justify-content: center;
+    margin-left: 8rem;
+}
+
+p.pModal{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.botonT{
+    margin:auto;
+}
+
+.labell{
+    margin-left: -1rem;
+}
+
+.imagenPatas{
+    vertical-align: middle;
+    border-style: none;
+    width: 6rem;
+    display: flex;
+    margin: auto;
+        margin-bottom: -0.6%;
+}
+
+
+.input2{
+    width: 100%;
+    padding: 1%;
+    border: none;
+    border-bottom: var(--gris) solid .2em;  
+    margin-bottom: 0.5rem;
+}
+
+
+
+.termino2{
+    width: 6%;
+   
+}
+
+input:checked{
+    background-color: #6698c4;
+}
+
+input#terminosA.termino2{
+    display: inline;
+}
+
+.boton2 a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+}
+
+.terminos2{
+        margin-left: -1.5rem
+}
+
+.terminos{
+  display: none;
+}
+
+
+.modalR {
+    
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    top:-28px;
+    display: none;
+}
+.contenidoModalR {
+    box-shadow: 0px 3px 16px 0px rgb(0 0 0 / 56%);
+    background-color: #FFFFFF;
+    width: 87%;
+    position: relative;
+    animation-name: animarmodal;
+    animation-duration: 0.5s;
+    padding-bottom: 1rem;
+    display: grid;
+    padding: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.contenidoModalR h2{
+    background: rgb(47,100,148);
+    background-image: -webkit-linear-gradient(0deg, #46B2C2 0%, #0E5FA1 99%);
+    text-align: center;
+    color: #FFFFFF;
+    padding: 0.7rem;
+}
+
+.contenidoModalR button{
+    width: 32%;
+    display: flex;
+    justify-content: center;
+    margin-left: 8rem;
+}
+
+
+.botonT{
+    margin:auto;
+}
+
+.labell{
+    margin-left: -1rem;
+}
+/*# sourceMappingURL=style.css.map */
 
 /* line 51, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_section_title.scss */
 .section_title2 h3::before {
@@ -720,7 +904,7 @@ h3 {
 
 /* line 126, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_section_title.scss */
 .mb-95 {
-  margin-bottom: 90px;
+  margin-bottom: 32px;
 }
 
 @media (max-width: 767px) {
@@ -1219,7 +1403,7 @@ h3 {
   z-index: 99;
   transform: translateY(70px);
   transition: transform 500ms ease, background 500ms ease;
-  -webkit-transition: transform 500ms ease, background 500ms ease;
+  -webkit-transitbox-shaion: transform 500ms ease, background 500ms ease;
   box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.1);
   background: rgba(255, 255, 255, 0.96);
 }
@@ -1307,7 +1491,7 @@ h3 {
 
 /* line 1, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_slider.scss */
 .slider_bg_1 {
-  background-image: url(banner.png);
+  background-image: url(../img/banner/banner.png);
 }
 
 /* line 4, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_slider.scss */
@@ -1848,7 +2032,7 @@ h3 {
 
 /* line 1, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_service.scss */
 .service_icon_bg_1 {
-  background-image: url(service_icon_bg_1.png);
+  background-image: url(../img/service/service_icon_bg_1.png);
 }
 
 /* line 4, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_service.scss */
@@ -5391,6 +5575,7 @@ h6 {
   /* line 529, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_blog.scss */
   .blog_details {
     padding: 60px 30px 35px 35px;
+    margin: -13rem;
   }
 }
 
@@ -5400,18 +5585,16 @@ h6 {
 }
 
 /* line 541, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_blog.scss */
-.blog_details a {
-  color: #ff8b23;
-}
+
 
 /* line 544, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_blog.scss */
 .blog_details a:hover {
-  color: #eb592d;
+  color: #2dc8eb;
 }
 
 /* line 549, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_blog.scss */
 .blog_details h2 {
-  font-size: 18px;
+  font-size: 38px;
   font-weight: 600;
   margin-bottom: 8px;
 }
@@ -5419,7 +5602,7 @@ h6 {
 @media (min-width: 768px) {
   /* line 549, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_blog.scss */
   .blog_details h2 {
-    font-size: 24px;
+    font-size: 38px;
     margin-bottom: 15px;
   }
 }
@@ -6542,4 +6725,40 @@ h6 {
   font-size: 12px;
 }
 
+.moIn{
+    margin-left: 1.5rem;
+}
+
+a.cerrarModal.boton.form-control.btn.btn-primary.submit.px-3{
+       color: #fff;
+    display: flex;
+    width: 43%;
+    justify-content: center;
+}
+
+
+a#terminosA.boton.btn.btn-primary.submit.px-3{
+    color:#fff;
+}
+
+input[readonly], select[readonly], textarea[readonly] {
+    cursor: not-allowed;
+   
+}
+
+table.table.align-items-center.mb-0{
+    font-size:15px;
+}
+/*!
+.contenedor{
+       display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3{
+    display:flex;
+    justify-content: center;
+        margin-top: 13.5rem;
+}*/
 /*# sourceMappingURL=style.css.map */

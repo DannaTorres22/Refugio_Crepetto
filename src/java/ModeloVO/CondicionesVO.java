@@ -10,30 +10,9 @@ package ModeloVO;
  * @author Gabriela Moron
  */
 public class CondicionesVO {
-    public String idCondicion,
-            idRespuesta,
-            nombre,
-            fechaNacimiento,
-            tipoDocumento,
-            numDocumento,
-            direccion,
-            celular,
-            profesion,
-            trabajo,
-            correo;
+    public String idCondicion,idRespuesta,nombre,fechaNacimiento,tipoDocumento,numDocumento,direccion,celular,profesion,trabajo,correo;
 
-    public CondicionesVO(String idCondicion,
-            String idRespuesta,
-            String nombre,
-            String fechaNacimiento,
-            String tipoDocumento,
-            String numDocumento,
-            String direccion,
-            String celular,
-            String profesion,
-            String trabajo,
-            String correo) {
-        
+    public CondicionesVO(String idCondicion, String idRespuesta, String nombre, String fechaNacimiento, String tipoDocumento, String numDocumento, String direccion, String celular, String profesion, String trabajo, String correo) {
         this.idCondicion = idCondicion;
         this.idRespuesta = idRespuesta;
         this.nombre = nombre;

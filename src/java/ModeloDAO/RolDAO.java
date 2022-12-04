@@ -17,9 +17,9 @@ import java.util.logging.Logger;
 public class RolDAO extends ConexionBd 
 {
     //1. Declarar variables
-    public Connection conexion;
-    public PreparedStatement puente;
-    public ResultSet mensajero;
+    private Connection conexion;
+    private PreparedStatement puente;
+    private ResultSet mensajero;
 
     private boolean operacion = false;
     private String sql;
@@ -49,15 +49,14 @@ public class RolDAO extends ConexionBd
     }
 
     
-    public ArrayList<RolVO> listar(String correUsuario) 
+    public ArrayList<RolVO> listar(String correoUsuario) 
     {
         ArrayList<RolVO> listaRol = new ArrayList<>();
         try 
         {
             conexion = this.obtenerConexion();
-            sql = "SELECT usuario.IDUSUARIO, rol.ROLTIPO FROM rol INNER JOIN usuario_rol ON rol.ROLID = usuario_rol.ROLID INNER JOIN usuario ON usuario_rol.IDUSUARIO = usuario.IDUSUARIO WHERE usuario.CORREOUSUARIO=?;";  
+            sql = "SELECT usuario.idUsuario, rol.rolTipo FROM rol INNER JOIN usuario on rol.rolId = usuario.rolId where usuario.correoUsuario=?;";  
             puente = conexion.prepareStatement(sql);
-            String correoUsuario = null;
             puente.setString(1, correoUsuario);
             mensajero = puente.executeQuery();
             while (mensajero.next()) 

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controlador;
+
 import ModeloDAO.NovedadDAO;
 import ModeloVO.NovedadVO;
 import java.io.IOException;
@@ -42,11 +43,7 @@ public class NovedadControlador extends HttpServlet {
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
         //2.instanciar VO // infromacion
-        NovedadVO novVO = new NovedadVO(idNovedad,
-                idMascota,
-                tipoNovedad,
-                observacionNovedad,
-                fechaNovedad);
+        NovedadVO novVO = new NovedadVO(idNovedad, idMascota, tipoNovedad, observacionNovedad, fechaNovedad);
 
         //3. instanciar Dao //opereaciones
         NovedadDAO novDAO = new NovedadDAO(novVO);
@@ -71,7 +68,7 @@ public class NovedadControlador extends HttpServlet {
                 request.getRequestDispatcher("consultarNovedad.jsp").forward(request, response);
                 break;
 
-            case 3:
+            case 3://Consultar Novedad
                 novVO = novDAO.consultarID(idNovedad);
                 if (novVO != null) {
                     request.setAttribute("datosConsultados", novVO);
